@@ -1,0 +1,133 @@
+<!-- Visible on mobile -->
+<!-- <div class="p-2 d-block d-md-none d-lg-none "> -->
+  <h1>{{getSelectedRoute}}</h1>
+<div *ngIf="deviceService.isMobile()">
+  <select class="form-control" #routeSelector (change)="selectRoute(routeSelector.value)">
+    <option></option>
+    <option *ngFor="let r of getRouteList" value="{{r._id}}">{{ r.Method }} - {{ r.Path }}</option>
+  </select>
+  <div class="content p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Visible on desktop -->
+<div class="d-flex" *ngIf="deviceService.isDesktop()">
+<!-- <div class="d-none d-md-flex"> -->
+<!-- <h1> Mobile: {{ deviceService.isMobile() }} - Desktop: {{ deviceService.isDesktop() }} </h1> -->
+
+  <nav class="sidebar sidenav bg-dark ">
+    <div class="stickyBtnGroup bg-dark">
+      <div class="btn-group p-0 m-0 w-100  " role="group">
+        <button class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['/projects']">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button class="btn  btn-secondary col-md-4" [routerLink]="['new']">
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn  btn-secondary col-md-4" (click)="getProjectData()">
+          <i [ngClass]="{'fa-spin': (isLoadingProject || isLoadingRoutes)}" class="fa fa-refresh"></i>
+        </button>
+        <button type="button" class="btn  btn-secondary col-md-4 rounded-0" data-toggle="modal"
+          data-target="#project-settings">
+          <i class="fa fa-cog"></i>
+        </button>
+
+      </div>
+      <div class="mt-1 px-2 ">
+        <div class="input-group input-group-seamless">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i [ngClass]="{'text-dark': routeFilter}" class="fa fa-search" aria-hidden="true"></i>
+            </div>
+          </div>
+          <input [(ngModel)]="routeFilter" type="text" class="form-control radius-0"
+            placeholder="{{'GENERAL.Filter' | translate}}...">
+        </div>
+      </div>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center rounded-0"
+        *ngFor="let r of getRouteList" [routerLink]="[r._id]">
+        <span> {{ r.Path }} </span>
+        <span class="badge badge-{{css_class_of_path_method(r.Method)}} badge-pill">{{ r.Method }}</span>
+      </li>
+    </ul>
+  </nav>
+  <div class="content p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="project-settings" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{'GENERAL.Settings' | translate}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-members-tab" data-toggle="pill" href="#members" role="tab"
+                aria-controls="v-pills-home" aria-selected="true"> {{ 'PROJECT.Members' | translate}} </a>
+              <a class="nav-link" id="v-pills-export-tab" data-toggle="pill" href="#export" role="tab"
+                aria-controls="v-pills-home" aria-selected="true"> {{ 'PROJECT.Export' | translate}} </a>
+
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="members" role="tabpanel" aria-labelledby="v-pills-members-tab">
+                <div class="row">
+                  <div class="col-md-12" *ngIf="selectedProjectModel">
+                    <div class="input-group input-group-seamless">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text" *ngIf="!isLoadingMember">
+                          @
+                        </div>
+                        <div class="input-group-text" *ngIf="isLoadingMember">
+                          <i class="fa fa-spin fa-spinner"></i>
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" placeholder="{{'PROJECT.AddMembers' | translate}}"
+                        [(ngModel)]="memberToAddOnProject" (keyup.enter)="addMemberOnProject()">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" (click)="addMemberOnProject()"><i
+                            class="fa fa-plus"></i></button>
+                      </div>
+                    </div>
+                    <div *ngIf="addMemberOnBoardResponse" class="text-center">
+                      <small *ngIf="!addMemberOnBoardResponse.success" class="form-text text-danger">{{ 'RESPONSE.' +
+                        addMemberOnBoardResponse.message | translate }}</small>
+                    </div>
+                    <hr>
+                    <div class="col-md-12 taskMember mb-2 p-3" *ngFor="let m of selectedProjectModel.Members">
+                      <img width="32" src="https://ui-avatars.com/api/?name={{m.Name}} {{m.Surname}}&size=64"
+                        class="rounded-circle mr-2">
+                      {{ m.Name }} {{ m.Surname }} <i> @{{m.Username}}</i>
+                      <i class="btn btn-sm btn-outline-danger fa fa-times pull-right"
+                        (click)="removeMemberFromBoard(m._id)"></i>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade show" id="export" role="tabpanel" aria-labelledby="v-pills-export-tab">
+                <p class="text-center"> <b>Coming soon:</b> Export routes on Postman format </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

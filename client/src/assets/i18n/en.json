@@ -1,0 +1,54 @@
+{
+  "GENERAL": {
+    "Search": "Search",
+    "Cancel": "Cancel",
+    "Save": "Save",
+    "Back": "Back",
+    "Close": "Close",
+    "General": "General",
+    "Settings": "Settings",
+    "Refresh": "Refresh",
+    "Update": "Update",
+    "Filter": "Filter"
+  },
+  "FORMS": {
+    "Required": "This field is required"
+  },
+  "RESPONSE": {
+    "ERR_INVALID_CREDENTIALS": "Invalid credentials!",
+    "ERR_USER_DOESNT_EXIST": "This user does not exist!",
+    "MSG_SUCCESS_REGISTER": "User registred successfully!",
+    "ERR_SOMETHING_WENT_WRONG": "Something went wrong. Please try again!"
+  },
+  "AUTH": {
+    "Username": "Username",
+    "Password": "Password",
+    "Name": "Name",
+    "Surname": "Surname",
+    "RegisterHere": "Don't have an account? Register here",
+    "LOGIN": "LOG IN",
+    "SIGNUP": "SIGN UP"
+  },
+  "PROJECT": {
+    "AddNewProject": "Add new project",
+    "Members": "Members",
+    "Export": "Export",
+    "AddMembers": "Add member on this project",
+    "Name": "Project name",
+    "Description": "Project description"
+  },
+  "ROUTE": {
+    "General": "General",
+    "Headers": "Headers",
+    "Parameters": "Parameters",
+    "Response": "Response",
+    "Path": "Path",
+    "Description": "Description",
+    "AddHeader": "Add header",
+    "AddParameter": "Add parameter",
+    "ResponseExample": "Response Example"
+  },
+  "LABEL": {
+    "FillRouteData": "Please fill required fields"
+  }
+}

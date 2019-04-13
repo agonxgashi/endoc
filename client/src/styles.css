@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+a, label, p, b,
+h1, h2, h3, h4, h5, h6,
+pre
+{
+    font-family: 'Maven Pro', 'Open Sans', sans-serif;
+}
+
+.clear{
+    clear: both;
+}
+
+.text-clickable:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+
+

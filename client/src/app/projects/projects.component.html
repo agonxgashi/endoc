@@ -1,0 +1,60 @@
+<div class="col-md-12">
+  <div class="container py-5">
+    <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
+      <button [disabled]="isLoadingProjects" class="btn btn-outline-dark w-100" (click)="getProjectList()">
+        <i [ngClass]="{'fa-spin': isLoadingProjects}" class="fa fa-refresh mr-2"></i> {{'GENERAL.Refresh' | translate}}
+      </button>
+
+      <div class="btn-group w-100" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+
+        </button>
+        <div class="dropdown-menu dropdown-menu-right mt-1" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item clickable" data-toggle="modal" data-target="#newProjectModal"><i class="fa fa-plus mr-2 text-dark"></i>
+            {{'PROJECT.AddNewProject' | translate}} </a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- LIST OF PROJECTS -->
+    <div class="list-group">
+      <a [routerLink]="['/projects', p._id]" *ngFor="let p of temp" class="list-group-item list-group-item-action flex-column align-items-">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"> {{ p.Title }} </h5>
+        </div>
+        <p class="mb-1"> {{ p.Description }} </p>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="modal fade" id="newProjectModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="col-md-12">
+            <label>{{'PROJECT.Name' | translate}}: </label>
+            <input [ngClass]="{'is-invalid': !projectToCreate.Title}" type="text" class="form-control" [(ngModel)]="projectToCreate.Title"
+              autocomplete="false">
+            <small *ngIf="!projectToCreate.Title" class="text-danger">{{'FORMS.Required' | translate}} <br></small>
+            <br>
+            <label>{{'PROJECT.Description' | translate}}: </label>
+            <textarea class="form-control" [(ngModel)]="projectToCreate.Description" cols="30" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary col-md-6" data-dismiss="modal"> <i class="fa fa-ban mr-2"></i>
+          {{'GENERAL.Close' | translate}}</button>
+        <button type="button" class="btn btn-primary col-md-6" data-dismiss="modal" [disabled]="!projectToCreate.Title"
+          (click)="saveProject()"> <i class="fa fa-save mr-2"></i> {{'GENERAL.Save' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>

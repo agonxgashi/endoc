@@ -1,0 +1,95 @@
+<div *ngIf="!selectedRoute">
+  <h5>Loading...</h5>
+</div>
+
+<div *ngIf="selectedRoute" class="row route-detail-wrapper p-md-5 m-0">
+  <div class="route-title col-md-12 bg-light border rounded p-4">
+    <div>
+      <div class="col-md-12 p-0 m-0">
+        <i  [ngClass]="{'text-danger fa-lock': selectedRoute.IsProtected, 'fa-unlock text-success': !selectedRoute.IsProtected}" class="fa pr-2 " aria-hidden="true"></i>
+        <span class="pull-right badge badge-danger px-2 ml-2 edit-btn" [routerLink]="['edit']"> EDIT </span>
+        <span class="badge badge-{{css_class_of_path_method}} px-2">{{ selectedRoute.Method }}</span>
+      </div>
+      <br>
+      <div class="text-nowrap" style="overflow-x: auto;">
+          <h4 class="text-secondary p-0 m-0"> {{ selectedRoute.Path }} </h4>
+      </div>   
+      <br>
+      <span>{{ selectedRoute.Description }}</span>
+    </div>
+  </div>
+
+
+  <!-- HEADERS TABLE -->
+  <div *ngIf="selectedRoute.Headers.length" class="table-responsive">
+    <br>
+    <br>
+    <table class="table table-bordered ">
+      <thead>
+        <tr class="text-center bg-dark">
+          <th colspan="4">
+            <h5 class="p-0 m-0 text-light">Headers</h5>
+          </th>
+        </tr>
+        <tr class="text-center bg-light">
+          <th>Key</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let h of selectedRoute.Headers">
+          <td> {{ h.Key }} </td>
+          <td> {{ h.Value }} </td>
+          <td> {{ h.Description }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <!-- PARAMETERS TABLE -->
+  <div *ngIf="selectedRoute.Parameters.length" class="table-responsive">
+    <br>
+    <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-center bg-dark">
+          <th colspan="4">
+            <h5 class="p-0 m-0 text-light">Parameters</h5>
+          </th>
+        </tr>
+        <tr class="text-center bg-light">
+          <th style="width: 10vh;">Required</th>
+          <th>Type</th>
+          <th>Parameter</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of selectedRoute.Parameters">
+          <td class="text-right">
+            <label *ngIf="p.IsRequired" class="text-danger">*</label>
+          </td>
+          <td> {{ p.Type }} </td>
+          <td> {{ p.ParameterName }} </td>
+          <td> {{ p.ParameterDataType }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <div *ngIf="selectedRoute.ResponseExample" class="col-md-12 m-0 p-0">
+    <br>
+    <br>
+    <div class="bg-light border rounded p-4">
+      <h4> Response Type: </h4>
+      <hr>
+      <pre><code>{{ selectedRoute.ResponseExample}}</code></pre>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,54 @@
+{
+  "GENERAL": {
+    "Search": "Kërko",
+    "Cancel": "Ndërprej",
+    "Save": "Ruaj",
+    "Back": "Prapa",
+    "Close": "Mbyll",
+    "General": "Gjenerale",
+    "Settings": "Rregullimet",
+    "Refresh": "Rifresko",
+    "Update": "Përditëso",
+    "Filter": "Filtro"
+  },
+  "FORMS": {
+    "Required": "Kjo fushë duhet të plotësohet"
+  },
+  "RESPONSE": {
+    "ERR_INVALID_CREDENTIALS": "Kredenciale të gabuara!",
+    "ERR_USER_DOESNT_EXIST": "Ky shfrytëzues nuk ekzistzon!",
+    "MSG_SUCCESS_REGISTER": "Shfrytëzuesi u regjistrua suksesshëm!",
+    "ERR_SOMETHING_WENT_WRONG": "Diçka shkoi gabim. Ju lutem provoni përsëri!"
+  },
+  "AUTH": {
+    "Username": "Shfrytëzuesi",
+    "Password": "Fjalëkalimi",
+    "Name": "Emri",
+    "Surname": "Mbiemri",
+    "RegisterHere": "Nuk keni llogari? Regjistrohu këtu",
+    "LOGIN": "Kyqu",
+    "SIGNUP": "Registrohu"
+  },
+  "PROJECT": {
+    "AddNewProject": "Shto projekt të ri",
+    "Members": "Anëtarët",
+    "Export": "Eksporto",
+    "AddMembers": "Shto anëtarë në projekt",
+    "Name": "Emri i projektit",
+    "Description": "Përshkrimi i projektit"
+  },
+  "ROUTE": {
+    "General": "Gjenerale",
+    "Headers": "Header-at",
+    "Parameters": "Parametrat",
+    "Response": "Pergjegjja",
+    "Path": "Shtegu",
+    "Description": "Përshkrimi",
+    "AddHeader": "Shto header",
+    "AddParameter": "Shto parametër",
+    "ResponseExample": "Shemull i përgjegjjes"
+  },
+  "LABEL": {
+    "FillRouteData": "Ju lutem plotësoni fushat e kërkuara"
+  }
+}
