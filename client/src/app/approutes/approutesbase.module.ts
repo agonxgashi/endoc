@@ -1,4 +1,4 @@
-import { EndocSharedModule } from 'src/global/modules/clickshared.module';
+import { EndocSharedModule } from 'src/global/modules/shared.module';
 import { QuoteComponent } from './quote/quote.component';
 import { AppRoutesBaseRoutingModule } from './approutesbase-routing.module';
 import { NgModule } from '@angular/core';

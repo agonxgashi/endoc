@@ -1,4 +1,4 @@
-import { EndocSharedModule } from 'src/global/modules/clickshared.module';
+import { EndocSharedModule } from 'src/global/modules/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
