@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const apiRoutes = require('express').Router()
-const config = require('./../../config/config.json')
+const config = require('./../../env/config.json')
 const ReturnObj = require('./../../models/return-object.model')
 
 apiRoutes.use(function (req, res, next) {

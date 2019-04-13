@@ -1,5 +1,5 @@
 const AppUser = require('./../../repository/auth/appUser.repo')
-const config = require('./../../config/config.json')
+const config = require('./../../env/config.json')
 const ReturnObj = require('./../../models/return-object.model')
 const express = require('express')
 const jwt = require('jsonwebtoken')

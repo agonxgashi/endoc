@@ -9,11 +9,15 @@
 
 ## Instructions: 
 
-1) Create a file on `/config` folder and name it `db-config.json`. Paste on file below code:
+1) Create a file on `/env` folder and name it `config.json`. Paste on file below code:
 
 ```JSON
 {
-    "Mongo_ConStr": "{Connection String to your MongoDB cluster}"
+  "Port": 3000,
+  "DB": {
+    "Mongo_ConStr": "<<YOUR_MONGODB_CON_STRING>>"
+  },
+  "JWT_SECRET": "<<YOUR_JWT_SECRET_KEY>>"
 }
 ```
 

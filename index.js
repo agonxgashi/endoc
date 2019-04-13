@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const routeImporter = require('./routes/route-importer')
-const config = require('./config/config.json')
+const config = require('./env/config.json')
 
 const app = express()
 
