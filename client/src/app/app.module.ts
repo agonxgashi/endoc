@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     FormsModule,
     EndocSharedModule,
     RouterModule.forRoot(
-      appRoutes
+      appRoutes, {useHash: true}
     ),
     DeviceDetectorModule.forRoot(),
     TranslateModule.forRoot({
