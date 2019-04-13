@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildendoc": "git pull && cd client && npm install && ng build --prod --extract-css=false —-base-href /endoc/ && cd .. && npm install && nodemon index.js",
-    "gh-page-publish": "cd client && npm install && ng build --prod --extract-css=false --base-href /endoc/ && cd .. && git push && git subtree push --prefix client/dist origin gh-pages"
+    "gh-page-publish": "cd client && npm install && ng build --prod --extract-css=false --base-href /endoc/ && cd .. && git add . && git commit -m \"gh publish \" && git push && git subtree push --prefix client/dist origin gh-pages"
   },
   "repository": {
     "type": "git",
