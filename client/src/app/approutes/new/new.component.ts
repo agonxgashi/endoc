@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { HeaderModel } from 'src/models/routes/header.model';
 import { RouteModel } from 'src/models/routes/route.model';
-import { ReturnObject } from 'src/models/returnObj.model';
 import { ParameterModel } from 'src/models/routes/parameter.model';
 import { ActivatedRoute, Params } from '@angular/router';
+import { ApiService } from 'src/services/authentication/api.service';
 
 @Component({
   selector: 'app-new',
@@ -12,103 +11,62 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./new.component.css']
 })
 export class NewComponent implements OnInit {
-  routeToCreate: RouteModel = new RouteModel();
+  route_to_create: RouteModel = new RouteModel();
   methods: string[];
-  parameterTypes: string[];
-  parameterDataTypes: string[];
-  headersAutocomplete = [
-    'Accept-Patch',
-    'Accept-Ranges',
-    'Age',
-    'Allow',
-    'Alt-Svc',
-    'Authorization',
-    'Cache-Control',
-    'Connection',
-    'Content-Disposition',
-    'Content-Encoding',
-    'Content-Language',
-    'Content-Length',
-    'Content-Location',
-    'Content-Range',
-    'Content-Type',
-    'Date',
-    'Delta-Base',
-    'ETag',
-    'Expires',
-    'IM',
-    'Last-Modified',
-    'Link',
-    'Location',
-    'Pragma',
-    'Proxy-Authenticate',
-    'Public-Key-Pins',
-    'Retry-After',
-    'Server',
-    'Set-Cookie',
-    'Strict-Transport-Security',
-    'Trailer',
-    'Transfer-Encoding',
-    'Tk',
-    'Upgrade',
-    'Vary',
-    'Via',
-    'Warning',
-    'WWW-Authenticate',
-  ];
+  parameter_types: string[];
+  data_types: string[];
+  header_types: string[];
 
-  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private api: ApiService) {
     this.fill_methods();
-    this.fill_parametertypes();
-    this.fill_parameterDataTypes();
+    this.fill_parameter_types();
+    this.fill_parameter_data_types();
+    this.fill_headers();
   }
 
   ngOnInit() {
     this.activatedRoute.parent.params.subscribe((pParams: Params) => {
-      this.routeToCreate.ProjectId  = pParams['projectId'];
+      this.route_to_create.ProjectId = pParams['projectId'];
     });
   }
 
-  saveRoute() {
-    this.http.post<ReturnObject>('/api/projectRoutes', this.routeToCreate)
-        .subscribe(
-          (res) => {
-            window.location.reload();
-          },
-          (err) => { window.location.reload(); }
-        );
+  async save_route() {
+    await this.api.post('/api/projectRoutes', this.route_to_create, true);
+    window.location.reload();
   }
 
-// Helper methods
-  addNewHeader() {
-    this.routeToCreate.Headers.push(new HeaderModel());
+  // Helper methods
+  add_new_header() {
+    this.route_to_create.Headers.push(new HeaderModel());
   }
 
-  removeHeader(index: number) {
-    this.routeToCreate.Headers.splice(index, 1);
+  remove_header(index: number) {
+    this.route_to_create.Headers.splice(index, 1);
   }
 
-  addNewParameter() {
-    this.routeToCreate.Parameters.push(new ParameterModel());
+  add_new_parameter() {
+    this.route_to_create.Parameters.push(new ParameterModel());
   }
 
-  removeParameter(index: number) {
-    this.routeToCreate.Parameters.splice(index, 1);
+  remove_parameter(index: number) {
+    this.route_to_create.Parameters.splice(index, 1);
   }
 
-  private fill_methods() {
-    // TODO: Fetch types from DB
-    this.methods =  ['GET', 'POST', 'PUT', 'DELETE'];
+  // Prefill methods
+  private async fill_methods() {
+    this.methods = await this.api.get('/api/satellite/http_request_types');
   }
 
-  private fill_parametertypes() {
-    // TODO: Fetch types from DB
-    this.parameterTypes = ['URL', 'BODY', 'QUERY'];
+  private async fill_parameter_types() {
+    this.parameter_types = await this.api.get('/api/satellite/parameter_types');
   }
 
-  private fill_parameterDataTypes() {
-    // TODO: Fetch types from DB
-    this.parameterDataTypes =  ['String', 'Integer', 'Boolean', 'Float', 'Object', 'ObjectId', 'Array'];
+  private async fill_parameter_data_types() {
+    this.data_types = await this.api.get('/api/satellite/data_types');
+  }
+
+  private async fill_headers() {
+    this.header_types = await this.api.get('/api/satellite/header_types');
   }
 
 }

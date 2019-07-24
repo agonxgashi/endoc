@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { HeaderModel } from 'src/models/routes/header.model';
 import { RouteModel } from 'src/models/routes/route.model';
-import { ReturnObject } from 'src/models/returnObj.model';
 import { ParameterModel } from 'src/models/routes/parameter.model';
 import { ActivatedRoute, Params } from '@angular/router';
+import { ApiService } from 'src/services/authentication/api.service';
 
 @Component({
   selector: 'app-edit',
@@ -12,113 +11,69 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  routeToEdit: RouteModel = new RouteModel();
+  route_to_edit: RouteModel = new RouteModel();
   methods: string[];
-  parameterTypes: string[];
-  parameterDataTypes: string[];
-  headersAutocomplete = [
-    'Accept-Patch',
-    'Accept-Ranges',
-    'Age',
-    'Allow',
-    'Alt-Svc',
-    'Authorization',
-    'Cache-Control',
-    'Connection',
-    'Content-Disposition',
-    'Content-Encoding',
-    'Content-Language',
-    'Content-Length',
-    'Content-Location',
-    'Content-Range',
-    'Content-Type',
-    'Date',
-    'Delta-Base',
-    'ETag',
-    'Expires',
-    'IM',
-    'Last-Modified',
-    'Link',
-    'Location',
-    'Pragma',
-    'Proxy-Authenticate',
-    'Public-Key-Pins',
-    'Retry-After',
-    'Server',
-    'Set-Cookie',
-    'Strict-Transport-Security',
-    'Trailer',
-    'Transfer-Encoding',
-    'Tk',
-    'Upgrade',
-    'Vary',
-    'Via',
-    'Warning',
-    'WWW-Authenticate',
-  ];
+  parameter_types: string[];
+  data_types: string[];
+  header_types: string[];
 
-  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+  constructor(private api: ApiService, private activatedRoute: ActivatedRoute) {
     this.fill_methods();
-    this.fill_parametertypes();
-    this.fill_parameterDataTypes();
+    this.fill_parameter_types();
+    this.fill_parameter_data_types();
+    this.fill_headers();
   }
 
-    ngOnInit() {
-      this.activatedRoute.params.subscribe((params: Params) => {
-        this.routeToEdit._id = params['routeId'];
-        this.activatedRoute.parent.params.subscribe((pParams: Params) => {
-          this.routeToEdit.ProjectId = pParams['projectId'];
-          this.getRouteDetails();
-        });
+  ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.route_to_edit._id = params['routeId'];
+      this.activatedRoute.parent.params.subscribe((pParams: Params) => {
+        this.route_to_edit.ProjectId = pParams['projectId'];
+        this.get_route_details();
       });
-    }
-
-    getRouteDetails() {
-      this.http.get(`/api/projectRoutes/${this.routeToEdit.ProjectId}/${this.routeToEdit._id}`)
-          .subscribe(
-            (res: any) => { this.routeToEdit = res.data || undefined; }
-          );
-    }
-
-    updateRoute() {
-      this.http.post<ReturnObject>('/api/projectRoutes/update', this.routeToEdit)
-        .subscribe(
-          (res) => {
-          },
-          (err) => { console.log(err); }
-        );
+    });
   }
 
-// Helper methods
-  addNewHeader() {
-    this.routeToEdit.Headers.push(new HeaderModel());
+  async get_route_details() {
+    this.route_to_edit = await this.api.get(`/api/projectRoutes/${this.route_to_edit.ProjectId}/${this.route_to_edit._id}`);
   }
 
-  removeHeader(index: number) {
-    this.routeToEdit.Headers.splice(index, 1);
+  async updateRoute() {
+    await this.api.post('/api/projectRoutes/update', this.route_to_edit, false, true);
   }
 
-  addNewParameter() {
-    this.routeToEdit.Parameters.push(new ParameterModel());
+  // Helper methods
+  add_new_header() {
+    this.route_to_edit.Headers.push(new HeaderModel());
   }
 
-  removeParameter(index: number) {
-    this.routeToEdit.Parameters.splice(index, 1);
+  remove_header(index: number) {
+    this.route_to_edit.Headers.splice(index, 1);
   }
 
-  private fill_methods() {
-    // TODO: Fetch types from DB
-    this.methods =  ['GET', 'POST', 'PUT', 'DELETE'];
+  add_new_parameter() {
+    this.route_to_edit.Parameters.push(new ParameterModel());
   }
 
-  private fill_parametertypes() {
-    // TODO: Fetch types from DB
-    this.parameterTypes = ['URL', 'BODY', 'QUERY'];
+  remove_parameter(index: number) {
+    this.route_to_edit.Parameters.splice(index, 1);
   }
 
-  private fill_parameterDataTypes() {
-    // TODO: Fetch types from DB
-    this.parameterDataTypes =  ['String', 'Integer', 'Boolean', 'Float', 'Object', 'ObjectId', 'Array'];
+  // Prefill methods
+  private async fill_methods() {
+    this.methods = await this.api.get('/api/satellite/http_request_types');
+  }
+
+  private async fill_parameter_types() {
+    this.parameter_types = await this.api.get('/api/satellite/parameter_types');
+  }
+
+  private async fill_parameter_data_types() {
+    this.data_types = await this.api.get('/api/satellite/data_types');
+  }
+
+  private async fill_headers() {
+    this.header_types = await this.api.get('/api/satellite/header_types');
   }
 
 }

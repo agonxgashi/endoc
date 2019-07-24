@@ -14,6 +14,10 @@ import { EndocSharedModule } from 'src/global/modules/shared.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { environment } from './../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// 3rd party libraries
+import { ToastrModule } from 'ngx-toastr';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -35,7 +39,7 @@ const appRoutes: Routes = [
     FormsModule,
     EndocSharedModule,
     RouterModule.forRoot(
-      appRoutes, {useHash: true}
+      appRoutes, { useHash: true }
     ),
     DeviceDetectorModule.forRoot(),
     TranslateModule.forRoot({
@@ -45,6 +49,14 @@ const appRoutes: Routes = [
         deps: [HttpClient]
       }
     }),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      extendedTimeOut: 0,
+      easeTime: 100,
+      closeButton: true,
+      preventDuplicates: true,
+    })
   ],
   providers: [
     LanguageService,

@@ -37,14 +37,14 @@ mongoose.connect(config.DB.Mongo_ConStr, {
     })
 
     const port = config.Port || 3200
-    https.createServer({
-      key: fs.readFileSync('env/server.key'),
-      cert: fs.readFileSync('env/server.cert')
-    }, app)
-      .listen(3000, function () {
-        console.log('App started successfully on port ' + port)
-      })
+    // https.createServer({
+    //   key: fs.readFileSync('env/server.key'),
+    //   cert: fs.readFileSync('env/server.cert')
+    // }, app)
+    //   .listen(3000, function () {
+    //     console.log('App started successfully on port ' + port)
+    //   })
 
-    // app.listen(port, () => console.log('App started successfully on port ' + port))
+    app.listen(port, () => console.log('App started successfully on port ' + port))
   }
 })

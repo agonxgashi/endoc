@@ -17,8 +17,9 @@
   "RESPONSE": {
     "ERR_INVALID_CREDENTIALS": "Invalid credentials!",
     "ERR_USER_DOESNT_EXIST": "This user does not exist!",
+    "ERR_SOMETHING_WENT_WRONG": "Something went wrong. Please try again!",
     "MSG_SUCCESS_REGISTER": "User registred successfully!",
-    "ERR_SOMETHING_WENT_WRONG": "Something went wrong. Please try again!"
+    "MSG_UPDATED": "Updated successfully"
   },
   "AUTH": {
     "Username": "Username",

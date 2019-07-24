@@ -17,8 +17,9 @@
   "RESPONSE": {
     "ERR_INVALID_CREDENTIALS": "Kredenciale të gabuara!",
     "ERR_USER_DOESNT_EXIST": "Ky shfrytëzues nuk ekzistzon!",
+    "ERR_SOMETHING_WENT_WRONG": "Diçka shkoi gabim. Ju lutem provoni përsëri!",
     "MSG_SUCCESS_REGISTER": "Shfrytëzuesi u regjistrua suksesshëm!",
-    "ERR_SOMETHING_WENT_WRONG": "Diçka shkoi gabim. Ju lutem provoni përsëri!"
+    "MSG_UPDATED": "U përditësua suksesshëm"
   },
   "AUTH": {
     "Username": "Shfrytëzuesi",

@@ -11,7 +11,7 @@ import { RouteModel } from 'src/models/routes/route.model';
 export class DetailsComponent implements OnInit {
   _project: string;
   _route: string;
-  selectedRoute: RouteModel;
+  selected_route: RouteModel;
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
@@ -19,21 +19,21 @@ export class DetailsComponent implements OnInit {
       this._route = params['routeId'];
       this.activatedRoute.parent.params.subscribe((pParams: Params) => {
         this._project = pParams['projectId'];
-        this.getRouteDetails();
+        this.get_route_details();
       });
     });
   }
 
-  getRouteDetails() {
+  get_route_details() {
     this.http.get(`/api/projectRoutes/${this._project}/${this._route}`)
-        .subscribe(
-          (res: any) => { this.selectedRoute = res.data || undefined; }
-        );
+      .subscribe(
+        (res: any) => { this.selected_route = res.data || undefined; }
+      );
   }
 
-  
+
   public get css_class_of_path_method(): string {
-    switch (this.selectedRoute.Method) {
+    switch (this.selected_route.Method) {
       case 'POST':
         return 'warning';
       case 'GET':
