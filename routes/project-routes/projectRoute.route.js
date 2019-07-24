@@ -8,12 +8,14 @@ router.get('/:projectId', function (req, res) {
   const projectId = req.params.projectId
 
   ProjectRoute.find({
-    ProjectId: projectId
-  }, function (err, projectRoutes) {
-    if (err) { res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, null)) }
+      ProjectId: projectId
+    }, function (err, projectRoutes) {
+      if (err) {
+        res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, null))
+      }
 
-    res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS', 200, projectRoutes))
-  })
+      res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS', 200, projectRoutes))
+    })
     .select('_id Path Method')
     .sort('Path')
 })
@@ -26,7 +28,7 @@ router.get('/:projectId/:routeId', function (req, res) {
     ProjectId: projectId
   }, function (err, projectRoutes) {
     if (err) {
-      res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, null)) 
+      res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, null))
     } else {
       res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS', 200, projectRoutes))
     }
@@ -57,8 +59,9 @@ router.post('/update', function (req, res) {
     Method: req.body.Method
   }
   // console.log(req.body.Path)
-  
-  ProjectRoute.findByIdAndUpdate(project._id, projToEdit, { new: true }, function (err, data) {
+  ProjectRoute.findByIdAndUpdate(project._id, projToEdit, {
+    new: true
+  }, function (err, data) {
     console.log(data, err);
     if (err) {
       res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, err))
