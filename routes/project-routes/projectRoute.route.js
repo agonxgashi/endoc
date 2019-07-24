@@ -58,11 +58,9 @@ router.post('/update', function (req, res) {
     ResponseExample: req.body.ResponseExample,
     Method: req.body.Method
   }
-  // console.log(req.body.Path)
   ProjectRoute.findByIdAndUpdate(project._id, projToEdit, {
     new: true
   }, function (err, data) {
-    console.log(data, err);
     if (err) {
       res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, err))
     } else {

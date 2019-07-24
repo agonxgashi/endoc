@@ -5,8 +5,6 @@ const router = express.Router()
 
 router.get('/:satelliteId', function (req, res) {
   const satelliteId = req.params.satelliteId
-  console.log(satelliteId)
-
   SatelliteModel.findOne({
       SatelliteId: satelliteId
     }, function (err, cargo) {
