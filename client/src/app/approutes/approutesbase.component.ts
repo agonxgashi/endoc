@@ -5,6 +5,7 @@ import { ReturnObject } from 'src/models/returnObj.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { ApiService } from 'src/services/authentication/api.service';
 
 @Component({
   selector: 'app-approutesbase',
@@ -12,39 +13,39 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   styleUrls: ['./approutesbase.component.css']
 })
 export class ApproutesBaseComponent implements OnInit {
-  routeFilter: string;
-  selectedProjectModel: ProjectModel;
-  selectedProject: string;
-  selectedRoute: string;
-  routesList: RouteModel[] = [];
-  isLoadingRoutes = false;
-  isLoadingProject = false;
+  route_filter: string;
+  selected_project_model: ProjectModel;
+  selected_project: string;
+  selected_route: string;
+  routes_list: RouteModel[] = [];
+  is_loading_routes = false;
+  is_loading_project = false;
 
   // Add member on project variables
-  memberToAddOnProject: string;
-  isLoadingMember = false;
-  addMemberOnBoardResponse: ReturnObject;
+  member_to_add_on_project: string;
+  is_loading_member = false;
+  add_member_on_board_response: ReturnObject;
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
-    private http: HttpClient,
+    private api: ApiService,
     public deviceService: DeviceDetectorService) {
   }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.selectedProject = params['projectId'];
-      this.getProjectData();
+      this.selected_project = params['projectId'];
+      this.get_project_data();
     });
   }
 
-  selectRoute(routeId) {
+  select_route(routeId) {
     this.router.navigate([routeId], {
       relativeTo: this.activatedRoute.parent
     });
   }
 
-  public get getSelectedRoute(): string {
+  public get get_selected_route(): string {
     return this.activatedRoute.params['routeId'];
   }
 
@@ -59,8 +60,8 @@ export class ApproutesBaseComponent implements OnInit {
   }
 
 
-  public get getRouteList(): RouteModel[] {
-    return this.routeFilter ? this.routesList.filter(x => x.Path.toUpperCase().includes(this.routeFilter.toUpperCase())) : this.routesList;
+  public get get_route_list(): RouteModel[] {
+    return this.route_filter ? this.routes_list.filter(x => x.Path.toUpperCase().includes(this.route_filter.toUpperCase())) : this.routes_list;
   }
 
   public css_class_of_path_method(method: string): string {
@@ -78,57 +79,76 @@ export class ApproutesBaseComponent implements OnInit {
     }
   }
 
-  getProjectDetails() {
-    this.isLoadingProject = true;
-    this.http.get<ReturnObject>('/api/projects/' + this.selectedProject)
-      .subscribe(
-        (res) => { this.selectedProjectModel = res.data; this.isLoadingProject = false; },
-        (err) => { this.isLoadingProject = false; }
-      );
+  async get_project_details() {
+    this.is_loading_project = true;
+    this.selected_project_model = await this.api.get(`/api/projects/${this.selected_project}`);
+    this.is_loading_project = false;
+
+    // this.http.get<ReturnObject>('/api/projects/' + this.selected_project)
+    //   .subscribe(
+    //     (res) => { this.selected_project_model = res.data; this.is_loading_project = false; },
+    //     (err) => { this.is_loading_project = false; }
+    //   );
   }
 
-  getAllRoutes() {
-    this.isLoadingRoutes = true;
-    this.http.get('/api/projectRoutes/' + this.selectedProject)
-      .subscribe(
-        (res: any) => { this.routesList = res.data || []; this.isLoadingRoutes = false; },
-        (err) => { this.isLoadingRoutes = false; }
-      );
+  async get_all_routes() {
+    this.is_loading_routes = true;
+    this.routes_list = await this.api.get(`/api/projectRoutes/${this.selected_project}`);
+    this.is_loading_routes = false;
+
+    // this.http.get('/api/projectRoutes/' + this.selected_project)
+    //   .subscribe(
+    //     (res: any) => { this.routes_list = res.data || []; this.is_loading_routes = false; },
+    //     (err) => { this.is_loading_routes = false; }
+    //   );
   }
 
-  getProjectData() {
-    this.getAllRoutes();
-    this.getProjectDetails();
+  get_project_data() {
+    this.get_all_routes();
+    this.get_project_details();
   }
 
-  addMemberOnProject() {
-    this.isLoadingMember = true;
-    this.http.get<ReturnObject>(`/api/projects/add-member/${this.selectedProject}/${this.memberToAddOnProject}`)
-      .subscribe(
-        (res) => {
-          this.addMemberOnBoardResponse = res;
-          if (this.addMemberOnBoardResponse.success) {
-            this.selectedProjectModel.Members = res.data;
-            this.memberToAddOnProject = '';
-          }
-          this.isLoadingMember = false;
-        },
-        (err) => { this.isLoadingMember = false; }
-      );
+  async add_member_on_project() {
+    this.is_loading_member = true;
+    this.add_member_on_board_response = await this.api.get(`/api/projects/add-member/${this.selected_project}/${this.member_to_add_on_project}`, true);
+    if (this.add_member_on_board_response.success) {
+      this.selected_project_model.Members = this.add_member_on_board_response.data;
+      this.member_to_add_on_project = '';
+    }
+    this.is_loading_member = false;
+
+    // this.http.get<ReturnObject>(`/api/projects/add-member/${this.selected_project}/${this.member_to_add_on_project}`)
+    //   .subscribe(
+    //     (res) => {
+    //       this.add_member_on_board_response = res;
+    //       if (this.add_member_on_board_response.success) {
+    //         this.selected_project_model.Members = res.data;
+    //         this.member_to_add_on_project = '';
+    //       }
+    //       this.is_loading_member = false;
+    //     },
+    //     (err) => { this.is_loading_member = false; }
+    //   );
   }
 
-  removeMemberFromBoard(memberId: string) {
-    this.isLoadingMember = true;
-    this.http.get<ReturnObject>(`/api/projects/remove-member/${this.selectedProject}/${memberId}`)
-      .subscribe(
-        (res) => {
-          if (res.success) {
-            this.selectedProjectModel.Members = res.data;
-          }
-          this.isLoadingMember = false;
-        },
-        (err) => { this.isLoadingMember = false; }
-      );
+  async remove_member_from_project(memberId: string) {
+    this.is_loading_member = true;
+    const res: ReturnObject = await this.api.delete(`/api/projects/remove-member/${this.selected_project}/${memberId}`, true);
+    if (res.success) {
+      this.selected_project_model.Members = res.data;
+    }
+    this.is_loading_member = false;
+
+    // this.http.get<ReturnObject>(`/api/projects/remove-member/${this.selected_project}/${memberId}`)
+    //   .subscribe(
+    //     (res) => {
+    //       if (res.success) {
+    //         this.selected_project_model.Members = res.data;
+    //       }
+    //       this.is_loading_member = false;
+    //     },
+    //     (err) => { this.is_loading_member = false; }
+    //   );
   }
 
 }
