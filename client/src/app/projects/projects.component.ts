@@ -3,6 +3,7 @@ import { ProjectModel } from 'src/models/project/project.model';
 import { JwtManager } from 'src/services/authentication/jwt-manager.service';
 import { ReturnObject } from 'src/models/returnObj.model';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/services/authentication/api.service';
 
 @Component({
   selector: 'app-projects',
@@ -10,46 +11,39 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  projectToCreate: ProjectModel = new ProjectModel();
-  projectList: ProjectModel[] = [];
-  isLoadingProjects = false;
+  project_to_create: ProjectModel = new ProjectModel();
+  project_list: ProjectModel[] = [];
+  filter: string;
+  is_loading = false;
 
-  constructor(private http: HttpClient, private login: JwtManager) { }
+  constructor(private login: JwtManager, private api: ApiService) { }
 
   ngOnInit() {
-    this.getProjectList();
+    this.populate_project_list();
   }
 
-  getProjectList() {
-    this.isLoadingProjects = true;
+  async populate_project_list() {
+    this.is_loading = true;
     const userId = this.login.getUser()._id;
-
-    this.http.get<ReturnObject>('/api/projects/all/' + userId)
-      .subscribe(
-        (res: any) => {
-          this.projectList = res.data || [];
-          this.isLoadingProjects = false;
-        }
-      );
+    this.project_list = await this.api.get(`/api/projects/all/${userId}`);
+    this.is_loading = false;
   }
 
-
-  public get temp(): ProjectModel[] {
-    return this.projectList;
+  public get get_project_list(): ProjectModel[] {
+    return this.filter ? this.project_list.filter(x => this.is_valid(x)) : this.project_list;
   }
 
-  saveProject() {
+  private is_valid(x: ProjectModel): boolean {
+    return (x.Title && x.Title.toUpperCase().includes(this.filter.toUpperCase()))
+      || (x.Description && x.Description.toUpperCase().includes(this.filter.toUpperCase()));
+  }
+
+  async save_project() {
     const userId = this.login.getUser()._id;
-    this.projectToCreate.Members.push(userId);
-    this.projectToCreate.CreatedBy = userId;
-    this.http.post<ReturnObject>('/api/projects', this.projectToCreate)
-      .subscribe(
-        (res) => {
-          this.projectList = res.data || [];
-          if (res.success) {
-            this.projectToCreate = new ProjectModel();
-          }
-        }
-      );
+    this.project_to_create.Members.push(userId);
+    this.project_to_create.CreatedBy = userId;
+
+    this.project_list = await this.api.post('/api/projects', this.project_to_create, false, true);
+    this.project_to_create = new ProjectModel();
   }
 }

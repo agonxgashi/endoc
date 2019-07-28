@@ -1,6 +1,5 @@
 <!-- Visible on mobile -->
 <!-- <div class="p-2 d-block d-md-none d-lg-none "> -->
-<h1>{{get_selected_route}}</h1>
 <div *ngIf="deviceService.isMobile()" class="px-2">
   <select class="form-control" #routeSelector (change)="select_route(routeSelector.value)">
     <option></option>
@@ -13,8 +12,9 @@
 
 <!-- Visible on desktop -->
 <div class="d-flex" *ngIf="deviceService.isDesktop()">
-  <!-- <div class="d-none d-md-flex"> -->
-  <!-- <h1> Mobile: {{ deviceService.isMobile() }} - Desktop: {{ deviceService.isDesktop() }} </h1> -->
+
+  <!-- <div class="bg-success">d</div>
+  <div class="bg-danger">d</div> -->
 
   <nav class="sidebar sidenav bg-dark ">
     <div class="stickyBtnGroup bg-dark">
@@ -46,10 +46,9 @@
         </div>
       </div>
     </div>
-    <!-- {{ get_route_list | json }} -->
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center rounded-0"
-        *ngFor="let r of get_route_list" [routerLink]="[r._id]">
+        *ngFor="let r of get_route_list" [routerLink]="[r._id]" [routerLinkActive]="['active-endpoint']">
         <span> {{ r.Path }} </span>
         <span class="badge badge-{{css_class_of_path_method(r.Method)}} badge-pill">{{ r.Method }}</span>
       </li>

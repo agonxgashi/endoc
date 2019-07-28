@@ -19,7 +19,9 @@
     "ERR_USER_DOESNT_EXIST": "This user does not exist!",
     "ERR_SOMETHING_WENT_WRONG": "Something went wrong. Please try again!",
     "MSG_SUCCESS_REGISTER": "User registred successfully!",
-    "MSG_UPDATED": "Updated successfully"
+    "MSG_UPDATED": "Updated successfully",
+    "MSG_PROJECT_CREATED": "Project was created successfully",
+    "ERR_PROJECT_NOT_CREATED": "Project was not created. Please try again!"
   },
   "AUTH": {
     "Username": "Username",
@@ -31,12 +33,14 @@
     "SIGNUP": "SIGN UP"
   },
   "PROJECT": {
+    "Projects": "Projects",
     "AddNewProject": "Add new project",
     "Members": "Members",
     "Export": "Export",
     "AddMembers": "Add member on this project",
     "Name": "Project name",
-    "Description": "Project description"
+    "Description": "Project description",
+    "NoProjects": "No projects to show... Maybe start by creating one?"
   },
   "ROUTE": {
     "General": "General",

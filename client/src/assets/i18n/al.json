@@ -19,7 +19,9 @@
     "ERR_USER_DOESNT_EXIST": "Ky shfrytëzues nuk ekzistzon!",
     "ERR_SOMETHING_WENT_WRONG": "Diçka shkoi gabim. Ju lutem provoni përsëri!",
     "MSG_SUCCESS_REGISTER": "Shfrytëzuesi u regjistrua suksesshëm!",
-    "MSG_UPDATED": "U përditësua suksesshëm"
+    "MSG_UPDATED": "U përditësua suksesshëm",
+    "MSG_PROJECT_CREATED": "Projekti u krijua me sukses",
+    "ERR_PROJECT_NOT_CREATED": "Projekti nuk u krijua. Ju lutem provoni përsëri!"
   },
   "AUTH": {
     "Username": "Shfrytëzuesi",
@@ -31,12 +33,14 @@
     "SIGNUP": "Registrohu"
   },
   "PROJECT": {
+    "Projects": "Projektet",
     "AddNewProject": "Shto projekt të ri",
     "Members": "Anëtarët",
     "Export": "Eksporto",
     "AddMembers": "Shto anëtarë në projekt",
     "Name": "Emri i projektit",
-    "Description": "Përshkrimi i projektit"
+    "Description": "Përshkrimi i projektit",
+    "NoProjects": "Nuk u gjend asnjë projekt. Krijoni një të ri?"
   },
   "ROUTE": {
     "General": "Gjenerale",

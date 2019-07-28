@@ -39,7 +39,7 @@ router.post('/', function (req, res) {
 
   project.save(function (err, examples) {
     if (err) {
-      res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, null))
+      res.status(500).send(new ReturnObj(false, 'ERR_PROJECT_NOT_CREATED', 500, null))
     }
 
     Project.find({
@@ -53,7 +53,7 @@ router.post('/', function (req, res) {
         res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, null))
       }
 
-      res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS', 200, projects))
+      res.status(200).send(new ReturnObj(true, 'MSG_PROJECT_CREATED', 200, projects))
     })
   })
 })

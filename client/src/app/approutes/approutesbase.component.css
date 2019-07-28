@@ -1,20 +1,25 @@
-
-.sidenav .list-group li{
+.sidenav .list-group li {
   cursor: pointer;
   background-color: #212529;
+  outline: none !important;
 }
 
-.sidenav .list-group li:hover{
+.sidenav .list-group li:hover {
   background-color: #16181b;
 }
 
-.sidenav .list-group li span{
+.active-endpoint {
+  background-color: #16181b !important;
+
+}
+
+.sidenav .list-group li span {
   color: #e9ecef;
 }
 
-.btn_registerNewRoute{
+.btn_registerNewRoute {
   border: 1px solid #16181b;
-} 
+}
 
 .stickyBtnGroup {
   position: -webkit-sticky;
@@ -24,5 +29,13 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  
+
+}
+
+.sidenav::-webkit-scrollbar {
+  display: none;
+}
+
+.sidenav::-moz-scrollbar {
+  display: none;
 }
