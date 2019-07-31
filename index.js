@@ -6,7 +6,7 @@ const cors = require('cors')
 const fs = require('fs')
 const https = require('https')
 
-const routeImporter = require('./routes/route-importer')
+const routeImporter = require('./routes')
 const config = require('./env/config.json')
 
 const app = express()

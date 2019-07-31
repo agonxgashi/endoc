@@ -35,11 +35,11 @@ export class EditComponent implements OnInit {
   }
 
   async get_route_details() {
-    this.route_to_edit = await this.api.get(`/api/projectRoutes/${this.route_to_edit.ProjectId}/${this.route_to_edit._id}`);
+    this.route_to_edit = await this.api.get(`/api/project/${this.route_to_edit.ProjectId}/endpoint/${this.route_to_edit._id}`);
   }
 
   async updateRoute() {
-    await this.api.post('/api/projectRoutes/update', this.route_to_edit, false, true);
+    await this.api.put(`/api/project/${this.route_to_edit.ProjectId}/endpoint/${this.route_to_edit._id}/edit`, this.route_to_edit, false, true);
   }
 
   // Helper methods

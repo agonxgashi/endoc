@@ -81,26 +81,14 @@ export class ApproutesBaseComponent implements OnInit {
 
   async get_project_details() {
     this.is_loading_project = true;
-    this.selected_project_model = await this.api.get(`/api/projects/${this.selected_project}`);
+    this.selected_project_model = await this.api.get(`/api/project/${this.selected_project}`);
     this.is_loading_project = false;
-
-    // this.http.get<ReturnObject>('/api/projects/' + this.selected_project)
-    //   .subscribe(
-    //     (res) => { this.selected_project_model = res.data; this.is_loading_project = false; },
-    //     (err) => { this.is_loading_project = false; }
-    //   );
   }
 
   async get_all_routes() {
     this.is_loading_routes = true;
-    this.routes_list = await this.api.get(`/api/projectRoutes/${this.selected_project}`);
+    this.routes_list = await this.api.get(`/api/project/${this.selected_project}/endpoint/list`);
     this.is_loading_routes = false;
-
-    // this.http.get('/api/projectRoutes/' + this.selected_project)
-    //   .subscribe(
-    //     (res: any) => { this.routes_list = res.data || []; this.is_loading_routes = false; },
-    //     (err) => { this.is_loading_routes = false; }
-    //   );
   }
 
   get_project_data() {
@@ -110,45 +98,23 @@ export class ApproutesBaseComponent implements OnInit {
 
   async add_member_on_project() {
     this.is_loading_member = true;
-    this.add_member_on_board_response = await this.api.get(`/api/projects/add-member/${this.selected_project}/${this.member_to_add_on_project}`, true);
+    const member = { username: this.member_to_add_on_project };
+    // this.add_member_on_board_response = await this.api.get(`/api/project/add-member/${this.selected_project}/${this.member_to_add_on_project}`, true);
+    this.add_member_on_board_response = await this.api.post(`/api/project/${this.selected_project}/member/add`, member, true);
     if (this.add_member_on_board_response.success) {
       this.selected_project_model.Members = this.add_member_on_board_response.data;
       this.member_to_add_on_project = '';
     }
     this.is_loading_member = false;
-
-    // this.http.get<ReturnObject>(`/api/projects/add-member/${this.selected_project}/${this.member_to_add_on_project}`)
-    //   .subscribe(
-    //     (res) => {
-    //       this.add_member_on_board_response = res;
-    //       if (this.add_member_on_board_response.success) {
-    //         this.selected_project_model.Members = res.data;
-    //         this.member_to_add_on_project = '';
-    //       }
-    //       this.is_loading_member = false;
-    //     },
-    //     (err) => { this.is_loading_member = false; }
-    //   );
   }
 
   async remove_member_from_project(memberId: string) {
     this.is_loading_member = true;
-    const res: ReturnObject = await this.api.delete(`/api/projects/remove-member/${this.selected_project}/${memberId}`, true);
+    const res: ReturnObject = await this.api.delete(`/api/project/${this.selected_project}/member/${memberId}/remove`, true);
     if (res.success) {
       this.selected_project_model.Members = res.data;
     }
     this.is_loading_member = false;
-
-    // this.http.get<ReturnObject>(`/api/projects/remove-member/${this.selected_project}/${memberId}`)
-    //   .subscribe(
-    //     (res) => {
-    //       if (res.success) {
-    //         this.selected_project_model.Members = res.data;
-    //       }
-    //       this.is_loading_member = false;
-    //     },
-    //     (err) => { this.is_loading_member = false; }
-    //   );
   }
 
 }

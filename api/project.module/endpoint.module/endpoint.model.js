@@ -14,9 +14,8 @@ var ParameterSchema = new mongoose.Schema({
   ParameterDataType: String
 })
 
-const ProjectRouteSchema = new Schema({
+const EndpointSchema = new Schema({
   ProjectId: mongoose.Schema.Types.ObjectId,
-  // ProjectId: { type: mongoose.Schema.Types.ObjectId, index: true },
   Method: String,
   Path: String,
   Description: String,
@@ -26,6 +25,6 @@ const ProjectRouteSchema = new Schema({
   Parameters: [ParameterSchema]
 })
 
-var ProjectRouteModel = mongoose.model('ProjectRoute', ProjectRouteSchema)
+var EndpointModel = mongoose.model('Endpoint', EndpointSchema)
 
-module.exports = ProjectRouteModel
+module.exports = EndpointModel

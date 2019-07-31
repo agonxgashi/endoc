@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { RouteModel } from 'src/models/routes/route.model';
+import { ApiService } from 'src/services/authentication/api.service';
 
 @Component({
   selector: 'app-details',
@@ -9,26 +10,23 @@ import { RouteModel } from 'src/models/routes/route.model';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  _project: string;
-  _route: string;
+  project_id: string;
+  endpoint_id: string;
   selected_route: RouteModel;
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this._route = params['routeId'];
+      this.endpoint_id = params['routeId'];
       this.activatedRoute.parent.params.subscribe((pParams: Params) => {
-        this._project = pParams['projectId'];
+        this.project_id = pParams['projectId'];
         this.get_route_details();
       });
     });
   }
 
-  get_route_details() {
-    this.http.get(`/api/projectRoutes/${this._project}/${this._route}`)
-      .subscribe(
-        (res: any) => { this.selected_route = res.data || undefined; }
-      );
+  async get_route_details() {
+    this.selected_route = await this.api.get(`/api/project/${this.project_id}/endpoint/${this.endpoint_id}`);
   }
 
 

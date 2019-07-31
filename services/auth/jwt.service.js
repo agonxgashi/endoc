@@ -14,7 +14,8 @@ apiRoutes.use(function (req, res, next) {
         return res.status(401).send(new ReturnObj(false, 'ERR_NOT_AUTHORIZED', 401, err))
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded
+        // req.decoded = decoded // full decoded jwt object
+        req.caller_id = decoded._id // only caller id
         next()
       }
     })

@@ -31,7 +31,7 @@ export class NewComponent implements OnInit {
   }
 
   async save_route() {
-    await this.api.post('/api/projectRoutes', this.route_to_create, true);
+    await this.api.post(`/api/project/${this.route_to_create.ProjectId}/endpoint/add`, this.route_to_create, true);
     window.location.reload();
   }
 

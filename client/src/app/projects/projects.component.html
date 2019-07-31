@@ -15,29 +15,6 @@
         </button>
       </div>
     </div>
-    <!-- <button type="button" class="btn btn-dark text-right" data-toggle="modal" data-target="#newProjectModal">
-        <i class="fa fa-plus mr-2"></i>
-        {{'PROJECT.AddNewProject' | translate}}
-      </button> -->
-    <!-- <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
-      <button [disabled]="isLoadingProjects" class="btn btn-outline-dark  w-100" (click)="getProjectList()">
-        <i [ngClass]="{'fa-spin': isLoadingProjects}" class="fa fa-refresh mr-2"></i> {{'GENERAL.Refresh' | translate}}
-      </button>
-
-      <div class="btn-group w-100" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-
-        </button>
-        <div class="dropdown-menu dropdown-menu-right mt-1" aria-labelledby="btnGroupDrop1">
-          <a class="dropdown-item clickable" data-toggle="modal" data-target="#newProjectModal"><i
-              class="fa fa-plus mr-2 text-dark"></i>
-            {{'PROJECT.AddNewProject' | translate}} </a>
-        </div>
-      </div>
-    </div> -->
-    <!-- <br> -->
-
     <div class="text-center" *ngIf="get_project_list.length == 0">
       <br>
       <br>
@@ -46,8 +23,6 @@
       <br>
       <span class="text-muted">{{'PROJECT.NoProjects' | translate}}</span>
     </div>
-
-
 
     <!-- LIST OF PROJECTS -->
     <div class="list-group" *ngIf="get_project_list.length != 0">
@@ -59,7 +34,6 @@
         <p class="mb-1"> {{ p.Description }} </p>
       </a>
     </div>
-
   </div>
 </div>
 
