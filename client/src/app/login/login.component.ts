@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
           this.loginResponse = res;
           if (this.loginResponse.success === true) {
             this.jwtManager.setJwt(this.loginResponse.data);
-            this.router.navigateByUrl('/projects');
+            this.router.navigateByUrl('/project');
           }
         },
         (err) => {
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.jwtManager.getUser()) {
-      this.router.navigate(['/projects']);
+      this.router.navigate(['/project']);
     }
     this.myStyle = {
       'position': 'fixed',

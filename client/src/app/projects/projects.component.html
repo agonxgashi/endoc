@@ -26,7 +26,7 @@
 
     <!-- LIST OF PROJECTS -->
     <div class="list-group" *ngIf="get_project_list.length != 0">
-      <a [routerLink]="['/projects', p._id]" *ngFor="let p of get_project_list"
+      <a [routerLink]="[p._id]" *ngFor="let p of get_project_list"
         class="list-group-item list-group-item-action flex-column align-items-">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1"> {{ p.Title }} </h5>

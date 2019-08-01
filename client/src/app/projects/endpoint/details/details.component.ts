@@ -13,7 +13,7 @@ export class DetailsComponent implements OnInit {
   project_id: string;
   endpoint_id: string;
   selected_route: RouteModel;
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService) { }
+  constructor(private activatedRoute: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {

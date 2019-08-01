@@ -1,0 +1,14 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <h4>{{ 'GENERAL.Settings' | translate }}</h4>
+    <hr>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-block btn-outline-dark" [routerLink]="['members']" [routerLinkActive]="['btn-active']"> {{ 'PROJECT.Members' | translate }} </button>
+    <button class="btn btn-block btn-outline-dark" [routerLink]="['export']" [routerLinkActive]="['btn-active']"> {{ 'PROJECT.Export' | translate }}  </button>
+  </div>
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

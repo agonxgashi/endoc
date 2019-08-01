@@ -3,16 +3,15 @@ import { ProjectModel } from 'src/models/project/project.model';
 import { RouteModel } from 'src/models/routes/route.model';
 import { ReturnObject } from 'src/models/returnObj.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { ApiService } from 'src/services/authentication/api.service';
 
 @Component({
-  selector: 'app-approutesbase',
-  templateUrl: './approutesbase.component.html',
-  styleUrls: ['./approutesbase.component.css']
+  selector: 'app-endpoint',
+  templateUrl: './endpoint.component.html',
+  styleUrls: ['./endpoint.component.css']
 })
-export class ApproutesBaseComponent implements OnInit {
+export class EndpointComponent implements OnInit {
   route_filter: string;
   selected_project_model: ProjectModel;
   selected_project: string;

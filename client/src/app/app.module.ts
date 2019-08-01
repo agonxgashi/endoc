@@ -22,8 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
-  { path: 'projects', loadChildren: './projects/projects.module#ProjectsModule' },
-  { path: 'projects/:projectId', loadChildren: './approutes/approutesbase.module#ApproutesBaseModule' },
+  { path: 'project', loadChildren: './projects/projects.module#ProjectsModule' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 

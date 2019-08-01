@@ -1,5 +1,4 @@
 <!-- Visible on mobile -->
-<!-- <div class="p-2 d-block d-md-none d-lg-none "> -->
 <div *ngIf="deviceService.isMobile()" class="px-2">
   <select class="form-control" #routeSelector (change)="select_route(routeSelector.value)">
     <option></option>
@@ -12,21 +11,20 @@
 
 <!-- Visible on desktop -->
 <div class="d-flex" *ngIf="deviceService.isDesktop()">
-
-  <!-- <div class="bg-success">d</div>
-  <div class="bg-danger">d</div> -->
-
   <nav class="sidebar sidenav bg-dark ">
     <div class="stickyBtnGroup bg-dark">
       <div class="btn-group p-0 m-0 w-100  " role="group">
-        <button class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['/projects']">
+        <button class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['/project']">
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </button>
-        <button class="btn  btn-secondary col-md-4" [routerLink]="['new']">
+        <button class="btn  btn-secondary col-md-4" [routerLink]="['endpoint', 'new']">
           <i class="fa fa-plus-circle" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn  btn-secondary col-md-4" (click)="get_project_data()">
           <i [ngClass]="{'fa-spin': (is_loading_project || is_loading_routes)}" class="fa fa-refresh"></i>
+        </button>
+        <button type="button" class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['settings']">
+          <i class="fa fa-cog"></i>
         </button>
         <button type="button" class="btn  btn-secondary col-md-4 rounded-0" data-toggle="modal"
           data-target="#project-settings">
@@ -48,7 +46,7 @@
     </div>
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center rounded-0"
-        *ngFor="let r of get_route_list" [routerLink]="[r._id]" [routerLinkActive]="['active-endpoint']">
+        *ngFor="let r of get_route_list" [routerLink]="['endpoint', r._id]" [routerLinkActive]="['active-endpoint']">
         <span> {{ r.Path }} </span>
         <span class="badge badge-{{css_class_of_path_method(r.Method)}} badge-pill">{{ r.Method }}</span>
       </li>
