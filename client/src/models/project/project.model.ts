@@ -1,5 +1,3 @@
-import { AppuserModel } from '../auth/AppUser.mode';
-
 export class ProjectModel {
     _id: string;
     Title: string;

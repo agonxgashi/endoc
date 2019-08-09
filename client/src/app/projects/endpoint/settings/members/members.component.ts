@@ -20,11 +20,18 @@ export class MembersComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
-
     this.activatedRoute.parent.parent.parent.params.subscribe(params => {
       this.project_id = params['projectId'];
       this.get_members();
     });
+  }
+
+  public get valid_member_to_add(): boolean {
+    if (!this.member_to_add_on_project) {
+      return false;
+    }
+    const user_exists = this.members && this.members.find(x => x.Username.toUpperCase() === this.member_to_add_on_project.toUpperCase() );
+    return !user_exists;
   }
 
   async get_members() {
@@ -32,14 +39,16 @@ export class MembersComponent implements OnInit {
   }
 
   async add_member_on_project() {
-    this.is_loading_member = true;
-    const member = { username: this.member_to_add_on_project };
-    this.add_member_on_board_response = await this.api.post(`/api/project/${this.project_id}/member/add`, member, true);
-    if (this.add_member_on_board_response.success) {
-      this.members = this.add_member_on_board_response.data;
-      this.member_to_add_on_project = '';
+    if (this.valid_member_to_add) {
+      this.is_loading_member = true;
+      const member = { username: this.member_to_add_on_project };
+      this.add_member_on_board_response = await this.api.post(`/api/project/${this.project_id}/member/add`, member, true);
+      if (this.add_member_on_board_response.success) {
+        this.members = this.add_member_on_board_response.data;
+        this.member_to_add_on_project = '';
+      }
+      this.is_loading_member = false;
     }
-    this.is_loading_member = false;
   }
 
   async remove_member_from_project(memberId: string) {
@@ -49,5 +58,5 @@ export class MembersComponent implements OnInit {
       this.members = res.data;
     }
     this.is_loading_member = false;
-  
+  }
 }

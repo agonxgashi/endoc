@@ -7,6 +7,8 @@
 
 *Note: This project is under heavy construction. As such, the API may change dramatically between major releases and documentation is lacking.*
 
+![](./assets/images/endoc_homepage.jpg "Homepage")
+
 ## Instructions to run tha application: 
 
 1) Create a file on `/env` folder and name it `config.json`. Paste on this file the code below:

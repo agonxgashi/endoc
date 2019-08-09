@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
 var HeaderSchema = new mongoose.Schema({
   Key: String,
@@ -14,7 +13,7 @@ var ParameterSchema = new mongoose.Schema({
   ParameterDataType: String
 })
 
-const EndpointSchema = new Schema({
+const EndpointSchema = new mongoose.Schema({
   ProjectId: mongoose.Schema.Types.ObjectId,
   Method: String,
   Path: String,

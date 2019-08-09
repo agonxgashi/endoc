@@ -1,4 +1,4 @@
-import { HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpHandler, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';

@@ -5,6 +5,8 @@ import { EndocSharedModule } from 'src/global/modules/shared.module';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { MembersComponent } from './members/members.component';
 import { ExportComponent } from './export/export.component';
+import { CheckInComponent } from './check-in/check-in.component';
+import { PublishSettingsComponent } from './publish-settings/publish-settings.component';
 
 @NgModule({
   imports: [
@@ -12,6 +14,6 @@ import { ExportComponent } from './export/export.component';
     SettingsRoutingModule,
     EndocSharedModule
   ],
-  declarations: [SettingsComponent, MembersComponent, ExportComponent]
+  declarations: [SettingsComponent, MembersComponent, ExportComponent, CheckInComponent, PublishSettingsComponent]
 })
 export class SettingsModule { }

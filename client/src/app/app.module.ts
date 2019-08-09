@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'project', loadChildren: './projects/projects.module#ProjectsModule' },
+  { path: 'public', loadChildren: './public/public.module#PublicModule' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 

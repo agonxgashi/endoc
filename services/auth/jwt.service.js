@@ -22,7 +22,7 @@ apiRoutes.use(function (req, res, next) {
   } else {
     // if there is no token
     // return an error
-    return res.status(401).send(new ReturnObj(false, 'ERR_NO_TOKEN_PROVIDED', 401, null))
+    return res.status(401).send(new ReturnObj(false, 'ERR_NOT_AUTHORIZED', 401, null))
   }
 })
 

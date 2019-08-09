@@ -70,18 +70,18 @@ export class ApiService {
     return response;
   }
 
-  async file(method: string, path: string, data: any) {
+  async file(file_type: string, path: string, data: any) {
     const url = `${this.apiUrl}${path}`;
-    switch (method) {
-      case 'POST':
-        const res_post: any = await this.http.post<Blob>(url, data, { responseType: 'blob' as 'json' }).toPromise();
+    switch (file_type) {
+      case 'pdf':
+        const res_post: any = await this.http.post(url, data, { responseType: 'blob' as 'json' }).toPromise();
         const blob_post = new Blob([res_post], { type: 'application/pdf' });
-        saveAs(blob_post);
+        saveAs(blob_post, 'endoc.pdf');
         break;
-      case 'PUT':
-        const res_put: any = await this.http.put<Blob>(url, data, { responseType: 'blob' as 'json' }).toPromise();
-        const blob_put = new Blob([res_put], { type: 'application/pdf' });
-        saveAs(blob_put);
+      case 'html':
+        const res_put: any = await this.http.post<Blob>(url, data, { responseType: 'blob' as 'json' }).toPromise();
+        const blob_put = new Blob([res_put]);
+        saveAs(blob_put, 'endoc.html');
         break;
       default:
         break;

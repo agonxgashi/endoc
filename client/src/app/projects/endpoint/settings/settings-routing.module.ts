@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings.component';
 import { MembersComponent } from './members/members.component';
 import { ExportComponent } from './export/export.component';
+import { CheckInComponent } from './check-in/check-in.component';
+import { PublishSettingsComponent } from './publish-settings/publish-settings.component';
 
 const routes: Routes = [
   {
@@ -11,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: 'members', component: MembersComponent },
       { path: 'export', component: ExportComponent },
-
+      { path: 'check-in', component: CheckInComponent },
+      { path: 'publish', component: PublishSettingsComponent },
     ]
   }
 ];
