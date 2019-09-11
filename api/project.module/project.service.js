@@ -5,7 +5,7 @@ module.exports = {
   list: async function (req, res) {
     try {
       const _userId = req.caller_id
-      const _data = await Project.find({ $or: [{ 'CreatedBy': _userId }, { 'Members': _userId }] }).exec()
+      const _data = await Project.find({ $or: [{ 'CreatedBy': _userId }, { 'Members': _userId }] }).select('Title Description').exec()
       res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS', 200, _data))
     } catch (error) {
       res.status(500).send(new ReturnObj(false, 'ERR_SOMETHING_WENT_WRONG', 500, null))

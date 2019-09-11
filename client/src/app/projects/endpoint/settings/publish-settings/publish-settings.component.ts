@@ -14,8 +14,7 @@ export class PublishSettingsComponent implements OnInit {
   publish: any;
   publish_exists: boolean;
   public_link: string;
-  constructor(private activatedRoute: ActivatedRoute, private api: ApiService, private notify: NotificationService, 
-    private translate: TranslateService) { }
+  constructor(private activatedRoute: ActivatedRoute, private api: ApiService, private notify: NotificationService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.activatedRoute.parent.parent.parent.params.subscribe(params => {
@@ -45,7 +44,9 @@ export class PublishSettingsComponent implements OnInit {
   }
 
   async copy_public_url() {
-    await navigator.clipboard.writeText(this.public_link);
+    const n: any = window.navigator;
+    n.clipboard.writeText(this.public_link);
+    // await navigator.clipboard.writeText(this.public_link);
     const translated: string = this.translate.instant('PUBLISH.Copied');
     this.notify.show(translated, true);
   }
