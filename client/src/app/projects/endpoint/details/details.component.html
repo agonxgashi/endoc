@@ -8,7 +8,7 @@
       <div class="col-md-12 p-0 m-0">
         <i [ngClass]="{'text-danger fa-lock': selected_route.IsProtected, 'fa-unlock text-success': !selected_route.IsProtected}"
           class="fa pr-2 " aria-hidden="true"></i>
-        <span class="pull-right badge badge-danger px-2 ml-2 edit-btn" [routerLink]="['edit']"> EDIT </span>
+        <a class="pull-right badge badge-danger px-2 ml-2 edit-btn" [routerLink]="['edit']"> EDIT </a>
         <span class="badge badge-{{css_class_of_path_method}} px-2">{{ selected_route.Method }}</span>
       </div>
       <br>

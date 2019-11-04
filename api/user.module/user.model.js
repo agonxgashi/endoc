@@ -38,5 +38,10 @@ AppUserSchema.methods.comparePassword = function (candidatePassword, cb) {
   })
 }
 
+AppUserSchema.methods.isValidPassword = async function (candidatePassword) {
+  var isValid = await bcrypt.compareSync(candidatePassword, this.Password)
+  return isValid
+}
+
 var AppUserModel = mongoose.model('AppUser', AppUserSchema)
 module.exports = AppUserModel

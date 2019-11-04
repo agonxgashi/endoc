@@ -4,6 +4,7 @@ import { ReturnObject } from 'src/models/returnObj.model';
 import { Router } from '@angular/router';
 import { JwtManager } from 'src/services/authentication/jwt-manager.service';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/services/authentication/api.service';
 
 @Component({
   selector: 'app-login',
@@ -18,27 +19,38 @@ export class LoginComponent implements OnInit {
   myParams: object = {};
   isInLogin = true;
 
-  constructor(private router: Router, private http: HttpClient, private jwtManager: JwtManager) {
+  constructor(private router: Router, private http: HttpClient, private jwtManager: JwtManager, private api: ApiService) {
     this.user = new AppuserModel();
     this.userToRegister = new AppuserModel();
   }
 
-  login() {
-    this.http.post<ReturnObject>('/api/auth/login', this.user)
-      .subscribe(
-        (res) => {
-          this.loginResponse = res;
-          if (this.loginResponse.success === true) {
-            this.jwtManager.setJwt(this.loginResponse.data);
-            this.router.navigateByUrl('/project');
-          }
-        },
-        (err) => {
-          this.loginResponse = new ReturnObject();
-          this.loginResponse.success = false;
-          this.loginResponse.message = 'ERR_LOGIN_NOCREDS';
-        }
-      );
+  async login() {
+    const res:ReturnObject = await this.api.post('/api/auth/login', this.user, true);
+    if (res.success) {
+      this.loginResponse = res;
+      this.jwtManager.setJwt(this.loginResponse.data);
+      this.router.navigateByUrl('/project');
+    } else {
+      this.loginResponse = new ReturnObject();
+      this.loginResponse.success = false;
+      this.loginResponse.message = 'ERR_LOGIN_NOCREDS';
+    }
+
+    // this.http.post<ReturnObject>('/api/auth/login', this.user)
+    //   .subscribe(
+    //     (res) => {
+    //       this.loginResponse = res;
+    //       if (this.loginResponse.success === true) {
+    //         this.jwtManager.setJwt(this.loginResponse.data);
+    //         this.router.navigateByUrl('/project');
+    //       }
+    //     },
+    //     (err) => {
+    //       this.loginResponse = new ReturnObject();
+    //       this.loginResponse.success = false;
+    //       this.loginResponse.message = 'ERR_LOGIN_NOCREDS';
+    //     }
+    //   );
   }
 
   register() {

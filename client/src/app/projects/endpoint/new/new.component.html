@@ -58,8 +58,8 @@
           <tbody>
             <tr *ngFor="let h of route_to_create.Headers; let i = index">
               <td>
-                <input list="headerExamples" type="text" [(ngModel)]="h.Key" class="form-control">
-                <datalist id="headerExamples">
+                <input list="headers" type="text" [(ngModel)]="h.Key" class="form-control">
+                <datalist id="headers">
                   <option *ngFor="let headerExample of header_types" value="{{headerExample}}">
                 </datalist>
               </td>
@@ -109,8 +109,8 @@
                 <input type="text" [(ngModel)]="p.ParameterName" class="form-control">
               </td>
               <td>
-                <input list="headerExamples" type="text" [(ngModel)]="p.ParameterDataType" class="form-control">
-                <datalist id="headerExamples">
+                <input list="dataTypes" type="text" [(ngModel)]="p.ParameterDataType" class="form-control">
+                <datalist id="dataTypes">
                   <option *ngFor="let dt of data_types" value="{{dt}}">
                 </datalist>
               </td>

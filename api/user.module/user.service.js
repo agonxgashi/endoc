@@ -5,22 +5,32 @@ const config = require('./../../env/config.json')
 
 module.exports = {
   login: async function (req, res) {
+    console.log(config)
+    console.log('LOGIN')
+     
     try {
       const _username = req.body.Username
       const _password = req.body.Password
 
       if (_username && _password) {
         const _user = await User.findOne({ Username: _username }).exec()
+        console.log(_user);
+        
         if (_user) {
           _user.comparePassword(_password, function (err, isMatch) {
-            if (err) throw err
+            if (err) { throw err }
             if (isMatch) {
               var payload = {
                 _id: _user._id,
                 Username: _username
               }
-              var token = jwt.sign(payload, config.JWT_SECRET, {
-                expiresIn: 86400 // 1 day
+              // console.log(config);
+              
+              var secret = config.JWT_SECRET
+              // var expires = config.JWT_TIMEOUT
+              // console.log(secret, expires)
+              var token = jwt.sign(payload, secret, {
+                expiresIn: 80000
               })
               res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS_LOGIN', 200, token))
             }

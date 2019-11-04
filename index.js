@@ -36,7 +36,7 @@ mongoose.connect(config.DB.Mongo_ConStr, {
       res.sendFile(path.join(__dirname, 'client/dist/index.html'))
     })
 
-    const port = config.Port || 3200
+    const port = process.env.PORT || config.Port || 3200
     // https.createServer({
     //   key: fs.readFileSync('env/server.key'),
     //   cert: fs.readFileSync('env/server.cert')

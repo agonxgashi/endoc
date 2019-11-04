@@ -14,10 +14,10 @@ const routes: Routes = [
       { path: '', component: QuoteComponent },
       { path: 'endpoint/new', component: NewComponent },
       { path: 'endpoint/:routeId', component: DetailsComponent },
-      { path: ':routeId/edit', component: EditComponent },
+      { path: 'endpoint/:routeId/edit', component: EditComponent },
 
       // Project settings
-      { path: 'settings', loadChildren: './settings/settings.module#SettingsModule' }
+      { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) }
     ]
   },
 ];

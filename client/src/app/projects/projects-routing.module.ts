@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: ProjectsComponent },
-  { path: ':projectId', loadChildren: './endpoint/endpoint.module#EndpointModule' }
+  { path: ':projectId', loadChildren: () => import('./endpoint/endpoint.module').then(m => m.EndpointModule) }
 ];
 
 @NgModule({

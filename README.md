@@ -7,9 +7,9 @@
 
 *Note: This project is under heavy construction. As such, the API may change dramatically between major releases and documentation is lacking.*
 
-![](./assets/images/endoc_homepage.jpg "Homepage")
+![](./assets/images/endoc_mockup.png "Homepage")
 
-## Instructions to run tha application: 
+## Instructions to run the application: 
 
 1) Create a file on `/env` folder and name it `config.json`. Paste on this file the code below:
 
@@ -19,7 +19,8 @@
   "DB": {
     "Mongo_ConStr": "<<YOUR_MONGODB_CON_STRING>>"
   },
-  "JWT_SECRET": "<<YOUR_JWT_SECRET_KEY>>"
+  "JWT_SECRET": "<<YOUR_JWT_SECRET_KEY>>",
+  "JWT_TIMEOUT": 86400
 }
 ```
 
@@ -44,4 +45,4 @@ node index.js
 
 ## Contact the developer: 
 
-Feel free to contact me on  [Telegram](https://t.me/agonxgashi) or [Twitter](https://twitter.com/agonxgashi).
+Feel free to say hi on  [Telegram](https://t.me/agonxgashi) or [Twitter](https://twitter.com/agonxgashi).

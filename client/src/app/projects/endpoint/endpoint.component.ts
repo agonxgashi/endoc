@@ -39,8 +39,8 @@ export class EndpointComponent implements OnInit {
   }
 
   select_route(routeId) {
-    this.router.navigate([routeId], {
-      relativeTo: this.activatedRoute.parent
+    this.router.navigate([`endpoint/${routeId}`], {
+      relativeTo: this.activatedRoute
     });
   }
 

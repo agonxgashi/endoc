@@ -21,9 +21,9 @@ import { ToastrModule } from 'ngx-toastr';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', loadChildren: './login/login.module#LoginModule' },
-  { path: 'project', loadChildren: './projects/projects.module#ProjectsModule' },
-  { path: 'public', loadChildren: './public/public.module#PublicModule' },
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+  { path: 'project', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
+  { path: 'public', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
@@ -39,7 +39,7 @@ const appRoutes: Routes = [
     FormsModule,
     EndocSharedModule,
     RouterModule.forRoot(
-      appRoutes, { useHash: true }
+      appRoutes
     ),
     DeviceDetectorModule.forRoot(),
     TranslateModule.forRoot({
@@ -78,7 +78,7 @@ const appRoutes: Routes = [
 export class AppModule { }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  const baseUrl = environment.production ? '/endoc/assets/i18n/' : './assets/i18n/';
+  const baseUrl = environment.production ? './assets/i18n/' : './assets/i18n/';
   return new TranslateHttpLoader(http, baseUrl);
 }
 
