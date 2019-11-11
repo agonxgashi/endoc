@@ -15,9 +15,12 @@ export class LoginComponent implements OnInit {
   userToRegister: AppuserModel;
   user: AppuserModel;
   loginResponse: ReturnObject;
+  registerResponse: ReturnObject;
   myStyle: object = {};
   myParams: object = {};
   isInLogin = true;
+  isLoading = false;
+  isRegisterLoading = false;
 
   constructor(private router: Router, private http: HttpClient, private jwtManager: JwtManager, private api: ApiService) {
     this.user = new AppuserModel();
@@ -25,47 +28,36 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    const res:ReturnObject = await this.api.post('/api/auth/login', this.user, true);
-    if (res.success) {
-      this.loginResponse = res;
-      this.jwtManager.setJwt(this.loginResponse.data);
-      this.router.navigateByUrl('/project');
-    } else {
-      this.loginResponse = new ReturnObject();
-      this.loginResponse.success = false;
-      this.loginResponse.message = 'ERR_LOGIN_NOCREDS';
+    if (this.user.Username && this.user.Password) {
+      this.isLoading = true;
+      this.loginResponse = undefined;
+      const res: ReturnObject = await this.api.post('/api/auth/login', this.user, true);
+      if (res && res.success === true) {
+        this.jwtManager.setJwt(res.data);
+        this.router.navigateByUrl('/project');
+      } else {
+        this.loginResponse = {
+          success: false,
+          message: 'ERR_LOGIN_NOCREDS'
+        };
+      }
+      this.isLoading = false;
     }
-
-    // this.http.post<ReturnObject>('/api/auth/login', this.user)
-    //   .subscribe(
-    //     (res) => {
-    //       this.loginResponse = res;
-    //       if (this.loginResponse.success === true) {
-    //         this.jwtManager.setJwt(this.loginResponse.data);
-    //         this.router.navigateByUrl('/project');
-    //       }
-    //     },
-    //     (err) => {
-    //       this.loginResponse = new ReturnObject();
-    //       this.loginResponse.success = false;
-    //       this.loginResponse.message = 'ERR_LOGIN_NOCREDS';
-    //     }
-    //   );
   }
 
-  register() {
-    this.http.post<ReturnObject>('/api/auth', this.userToRegister)
-      .subscribe(
-        (res) => {
-          if (res.success) {
-            this.user.Username = this.userToRegister.Username;
-            this.user.Password = this.userToRegister.Password;
-            this.userToRegister = new AppuserModel();
-          } else {
-            this.loginResponse = res;
-          }
-        }
-      );
+  async register() {
+    this.isRegisterLoading = true;
+    const res: ReturnObject = await this.api.post('/api/auth/register', this.userToRegister, true);
+    if (res && res.success === true) {
+      this.jwtManager.setJwt(res.data);
+      this.router.navigateByUrl('/project');
+    } else {
+      this.registerResponse = {
+        success: false,
+        message: res.message
+      };
+    }
+    this.isRegisterLoading = false;
   }
 
   toggleRegisterLogin() {

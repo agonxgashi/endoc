@@ -1,4 +1,8 @@
-<div class="row route-detail-wrapper p-1 m-0">
+<p *ngIf="isLoading" class="text-center p-5">
+  <i class="fa fa-spinner fa-pulse fa-fw"></i>
+</p>
+
+<div *ngIf="!isLoading" class="row route-detail-wrapper p-1 m-0">
   <div class="clear"></div>
   <div class="col-md-12 p-0 mt-2">
     <nav>

@@ -15,7 +15,12 @@
         </button>
       </div>
     </div>
-    <div class="text-center" *ngIf="get_project_list.length == 0">
+    <p class="text-center p-3 pt-5" *ngIf="is_loading">
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+      <br>
+      <span class="text-muted">{{'PROJECT.Loading' | translate}}</span>
+    </p>
+    <div class="text-center" *ngIf="!is_loading && get_project_list.length == 0">
       <br>
       <br>
       <img id="no-data-img" src="assets/images/unDraw/no_data.svg" alt="">

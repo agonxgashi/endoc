@@ -33,7 +33,9 @@
     "MSG_UPDATED_PUBLISH": "Publikimi u përditësua me sukses",
     "MSG_NEW_PUBLISH": "U krijua publikim i ri",
     "MSG_PUBLISH_DELETED": "Publikimi u fshi",
-    "ERR_PUBLISH_NOT_DELETED": "Publikimi NUK u fshi"
+    "ERR_PUBLISH_NOT_DELETED": "Publikimi NUK u fshi",
+    "ERR_LOGIN_NOCREDS": "Përdoruesi apo Fjalëkalimi është dhënë gabim",
+    "ERR_THIS_USER_EXISTS": "Një përdorues është i regjistruar me këtë username"
   },
   "AUTH": {
     "Username": "Shfrytëzuesi",
@@ -54,7 +56,8 @@
     "Name": "Emri i projektit",
     "CheckIn": "Krijo Verzion",
     "Description": "Përshkrimi i projektit",
-    "NoProjects": "Nuk u gjend asnjë projekt. Krijoni një të ri?"
+    "NoProjects": "Nuk u gjend asnjë projekt. Krijoni një të ri?",
+    "Loading": "Duke u ngarkuar"
   },
   "ROUTE": {
     "General": "Gjenerale",
@@ -77,6 +80,7 @@
   "PUBLISH": {
     "Current": "Publikimi aktual",
     "Copied": "Linku publik u kopjua në memorje",
+    "NotCopied": "Linku publik nuk mund të kopjohet",
     "Unpublish": "Fshij publikimin",
     "no_publish": "Ky projekt nuk ka publikim",
     "info": "Publikimi i një projekti munëson ndarjen e dokumentimit të API me persona të tjerë.\nPas publikimit të dokumentimt, një link do të gjenerohet për ju, i cili do të jetë i çasshëm nga të gjithë (pavarësisht nëse janë apo jo përdorues të <endoc />",

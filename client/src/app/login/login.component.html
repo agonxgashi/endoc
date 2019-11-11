@@ -11,6 +11,7 @@
         <ul class="list-unstyled">
           <li> Manage your API endpoints. </li>
           <li> Easy way for front-end and back-end developers to comunicate with each other </li>
+          <li> Free and always will be </li>
         </ul>
       </div>
     </div>
@@ -57,8 +58,12 @@
               <label class="text-center text-danger col-md-12"> {{ 'RESPONSE.' + loginResponse?.message | translate}}
               </label>
             </div>
-            <button class="btn btn-dark btn-block" [disabled]="!(user.Username && user.Password)" (click)="login()"
-              routerLinkActive="router-link-active"> {{'AUTH.LOGIN' | translate}} </button>
+            <button class="btn btn-dark btn-block" 
+                    [disabled]="isLoading || !(user.Username && user.Password)" 
+                    (click)="login()"> 
+                    <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
+                    <span *ngIf="!isLoading">{{'AUTH.LOGIN' | translate}} </span>      
+            </button>
             <button class="btn btn-dark btn-block" (click)="toggleRegisterLogin()"> {{ 'AUTH.RegisterHere' |
               translate}} </button>
           </div>
@@ -96,9 +101,18 @@
 
             </div>
 
-            <button type="button" class="btn btn-dark col-md-12 btn-block"
-              [disabled]="!userToRegister.Name || !userToRegister.Surname || !userToRegister.Username || !userToRegister.Password"
-              (click)="register()">{{'AUTH.SIGNUP' | translate}}</button>
+            <div *ngIf="registerResponse" class="col-md-12 pt-0 pb-2">
+              <label class="text-center text-danger col-md-12"> {{ 'RESPONSE.' + registerResponse?.message | translate}}
+              </label>
+            </div>
+
+            <button type="button" 
+                    class="btn btn-dark col-md-12 btn-block"
+                    [disabled]="isRegisterLoading || (!userToRegister.Name || !userToRegister.Surname || !userToRegister.Username || !userToRegister.Password)"
+                    (click)="register()">
+                    <i *ngIf="isLoading" class="fa fa-spin fa-spinner"></i>
+                    <span *ngIf="!isLoading">{{'AUTH.SIGNUP' | translate}} </span>      
+          </button>
 
             <button type="button" class="btn btn-dark col-md-12 btn-block" (click)="toggleRegisterLogin()">
               <i class="fa fa-arrow-left mr-2"></i> Back to Log In

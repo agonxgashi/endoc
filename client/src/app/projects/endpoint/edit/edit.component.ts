@@ -11,6 +11,7 @@ import { ApiService } from 'src/services/authentication/api.service';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  isLoading = false;
   route_to_edit: RouteModel = new RouteModel();
   methods: string[];
   parameter_types: string[];
@@ -35,7 +36,9 @@ export class EditComponent implements OnInit {
   }
 
   async get_route_details() {
+    this.isLoading = true;
     this.route_to_edit = await this.api.get(`/api/project/${this.route_to_edit.ProjectId}/endpoint/${this.route_to_edit._id}`);
+    this.isLoading = false;
   }
 
   async updateRoute() {

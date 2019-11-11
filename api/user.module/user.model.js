@@ -30,12 +30,15 @@ AppUserSchema.pre('save', function (next) {
   })
 })
 
-AppUserSchema.methods.comparePassword = function (candidatePassword, cb) {
-  const thisPsw = this.Password
-  bcrypt.compare(candidatePassword, this.Password, function (err, isMatch) {
-    if (err) return cb(err)
-    cb(null, isMatch)
-  })
+AppUserSchema.methods.comparePassword = async function (candidatePassword, cb) {
+  const result = await bcrypt.compare(candidatePassword, this.Password)
+  return result
+
+  // const thisPsw = this.Password
+  // bcrypt.compare(candidatePassword, this.Password, function (err, isMatch) {
+  //   if (err) return cb(err)
+  //   cb(null, isMatch)
+  // })
 }
 
 AppUserSchema.methods.isValidPassword = async function (candidatePassword) {

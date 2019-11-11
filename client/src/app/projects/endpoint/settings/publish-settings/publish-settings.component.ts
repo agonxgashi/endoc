@@ -44,11 +44,14 @@ export class PublishSettingsComponent implements OnInit {
   }
 
   async copy_public_url() {
-    const n: any = window.navigator;
-    n.clipboard.writeText(this.public_link);
-    // await navigator.clipboard.writeText(this.public_link);
+    try {
+      const n: any = window.navigator;
     const translated: string = this.translate.instant('PUBLISH.Copied');
     this.notify.show(translated, true);
+    } catch (e) {
+      const translated: string = this.translate.instant('PUBLISH.NotCopied');
+      this.notify.show(translated, false);
+    }
   }
 
   public publish_public_link(): string {
@@ -57,7 +60,7 @@ export class PublishSettingsComponent implements OnInit {
     } else {
       const parsedUrl = new URL(window.location.href);
       const baseUrl = parsedUrl.origin;
-      const public_url = `${baseUrl}/#/public/api/${this.publish.PublicHash}`;
+      const public_url = `${baseUrl}/public/api/${this.publish.PublicHash}`;
       return public_url;
     }
   }

@@ -1,6 +1,6 @@
 export class ReturnObject {
-    status: number;
+    status?: number;
     success: boolean;
-    message: string;
-    data: any;
+    message?: string;
+    data?: any;
 }
