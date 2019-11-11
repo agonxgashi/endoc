@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // 3rd party libraries
 import { ToastrModule } from 'ngx-toastr';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
       easeTime: 100,
       closeButton: true,
       preventDuplicates: true,
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     LanguageService,
