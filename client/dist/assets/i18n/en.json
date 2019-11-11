@@ -33,7 +33,9 @@
     "MSG_UPDATED_PUBLISH": "Publish updated",
     "MSG_NEW_PUBLISH": "A new publish was created",
     "MSG_PUBLISH_DELETED": "Publish deleted",
-    "ERR_PUBLISH_NOT_DELETED": "Publish was NOT deleted!"
+    "ERR_PUBLISH_NOT_DELETED": "Publish was NOT deleted!",
+    "ERR_LOGIN_NOCREDS": "Username or Password is incorrect",
+    "ERR_THIS_USER_EXISTS": "A user is registred with this username"
   },
   "AUTH": {
     "Username": "Username",
@@ -54,7 +56,8 @@
     "AddMembers": "Add member on this project",
     "Name": "Project name",
     "Description": "Project description",
-    "NoProjects": "No projects to show... Maybe start by creating one?"
+    "NoProjects": "No projects to show... Maybe start by creating one?",
+    "Loading": "Loading my projects"
   },
   "ROUTE": {
     "General": "General",
@@ -77,6 +80,7 @@
   "PUBLISH": {
     "Current": "Current publish",
     "Copied": "Public link was copied to clipboard",
+    "NotCopied": "Can not copy the link",
     "Unpublish": "Unpublish",
     "no_publish": "This project doesn't have a public publish!",
     "info": "Publish makes possible to share documentation of your API with other people.\nAfter a successful publish, a link will be generated for you, which will be accessible by all who have this link (including registred and unregistred users of <endoc />",
