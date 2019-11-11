@@ -1,0 +1,128 @@
+{
+  "configVersion": 1,
+  "timestamp": 1572903809401,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/10-es2015.b9587de19d75559905fe.js",
+        "/10-es5.b9587de19d75559905fe.js",
+        "/6-es2015.69ef039b0c9491f3744b.js",
+        "/6-es5.69ef039b0c9491f3744b.js",
+        "/7-es2015.8e6c319dd1664ae1b8f7.js",
+        "/7-es5.8e6c319dd1664ae1b8f7.js",
+        "/8-es2015.57df9901a14e50b9f86d.js",
+        "/8-es5.57df9901a14e50b9f86d.js",
+        "/9-es2015.8d25baae1c46b45b4291.js",
+        "/9-es5.8d25baae1c46b45b4291.js",
+        "/common-es2015.09dfd1d8ffae54ba3365.js",
+        "/common-es5.09dfd1d8ffae54ba3365.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.6c587fa3163a05496d63.js",
+        "/main-es5.6c587fa3163a05496d63.js",
+        "/manifest.webmanifest",
+        "/polyfills-es2015.d7f449456a4c8236abbc.js",
+        "/polyfills-es5.9cf6cba196df156496c8.js",
+        "/runtime-es2015.f98fe5d85609ec8ff3c9.js",
+        "/runtime-es5.f98fe5d85609ec8ff3c9.js",
+        "/scripts.8c4119a659b601fb075c.js",
+        "/styles.f90c14ee0ccdb15abc76.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/i18n/al.json",
+        "/assets/i18n/en.json",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/endoc-wide-logo.svg",
+        "/assets/images/unDraw/no_data.svg",
+        "/assets/scripts/bsadmin.js",
+        "/assets/styles/bsadmin.css",
+        "/fontawesome-webfont.674f50d287a8c48dc19b.eot",
+        "/fontawesome-webfont.912ec66d7572ff821749.svg",
+        "/fontawesome-webfont.af7ae505a9eed503f8b8.woff2",
+        "/fontawesome-webfont.b06871f281fee6b241d6.ttf",
+        "/fontawesome-webfont.fee66e712a8a08eef580.woff"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/10-es2015.b9587de19d75559905fe.js": "6acab03092d6c1a5495e93c5225512582357fc5d",
+    "/10-es5.b9587de19d75559905fe.js": "8011fd38df5f08da532cdb19e8f011a4087eb49c",
+    "/6-es2015.69ef039b0c9491f3744b.js": "9781160273f5915105ca031ec2cd77824146a19f",
+    "/6-es5.69ef039b0c9491f3744b.js": "affeeac8e068292aa8a0ae49dfb4badf16613ce8",
+    "/7-es2015.8e6c319dd1664ae1b8f7.js": "32198c9f200bdeab3c3dd3c8110bac755c66df17",
+    "/7-es5.8e6c319dd1664ae1b8f7.js": "8ee99798dff0acdd43fddc08f5e9165f151de5b9",
+    "/8-es2015.57df9901a14e50b9f86d.js": "3dad2f9b2d2ae804738383290a0fa79d4d866291",
+    "/8-es5.57df9901a14e50b9f86d.js": "3aa06c20e4828755809ced74539fcf3cc2d4c87e",
+    "/9-es2015.8d25baae1c46b45b4291.js": "66495b51e9384934875b8dec16cfa8867aa219a6",
+    "/9-es5.8d25baae1c46b45b4291.js": "d436ebe461039e90acc4cf681aa8cc9b41d7dcf6",
+    "/assets/i18n/al.json": "3fca576cdea6a32bf3d73db84d5b73bd4d80e1dc",
+    "/assets/i18n/en.json": "cdd071ce28cbfe93dde4994e5b3d3db8b8d29796",
+    "/assets/icons/icon-128x128.png": "3644fd064707f5cae55bea30e600fbbe34405db2",
+    "/assets/icons/icon-144x144.png": "3ad378757f074b0dcf185f090f1bca8ed63befcb",
+    "/assets/icons/icon-152x152.png": "a7d5fd5149fdd5d3e2d55dd27f58ed344dd9ea08",
+    "/assets/icons/icon-192x192.png": "25b86277fb871ca299df0fbfa079bc45d9adc86d",
+    "/assets/icons/icon-384x384.png": "0b54d93e5c5749be6b24463df8d73ba00cc81c9b",
+    "/assets/icons/icon-512x512.png": "4d87b8d7964bed0a190861428dc459f54805d0bb",
+    "/assets/icons/icon-72x72.png": "888a43f611c190641370c29d9f4dee4c97febbd1",
+    "/assets/icons/icon-96x96.png": "5032b5cf138fd4fe79bcc624a30f04a2f152ec30",
+    "/assets/images/endoc-wide-logo.svg": "0564c919a130821e577457fb56d618ae90ea82eb",
+    "/assets/images/unDraw/no_data.svg": "e2a19576f705f9838cdc06db07cf320ad2c428e7",
+    "/assets/scripts/bsadmin.js": "dd98f5fe6fedd2a37dc7483dd63e36888a476d71",
+    "/assets/styles/bsadmin.css": "80bfb97bccb751d37fce05bd22e2b7fe4827d7ac",
+    "/common-es2015.09dfd1d8ffae54ba3365.js": "56205c369796f1a2a0402244e8b99bba20f28152",
+    "/common-es5.09dfd1d8ffae54ba3365.js": "0b90b8b403a3e5059f16e149bb053e95b90ad59a",
+    "/favicon.ico": "fa056d70ce742373b52edb7e68e3b61828d54193",
+    "/fontawesome-webfont.674f50d287a8c48dc19b.eot": "d980c2ce873dc43af460d4d572d441304499f400",
+    "/fontawesome-webfont.912ec66d7572ff821749.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
+    "/fontawesome-webfont.af7ae505a9eed503f8b8.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
+    "/fontawesome-webfont.b06871f281fee6b241d6.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
+    "/fontawesome-webfont.fee66e712a8a08eef580.woff": "28b782240b3e76db824e12c02754a9731a167527",
+    "/index.html": "4c17a06c79913911eeccadc3f2c7e07954bbab2a",
+    "/main-es2015.6c587fa3163a05496d63.js": "7d1fac7dc2d04f76ac9c22fd765f4514144ac6d9",
+    "/main-es5.6c587fa3163a05496d63.js": "2aeef48f344a64e313c5eb00f17be087b5b33c91",
+    "/manifest.webmanifest": "fb95f74fd96850adbaf433e645c854efdbceb254",
+    "/polyfills-es2015.d7f449456a4c8236abbc.js": "aa7337b90a54bee56e29fe430cd4bd500b183d39",
+    "/polyfills-es5.9cf6cba196df156496c8.js": "933435d8c51c22085f5056f6ac19c1c0a1fbe3ed",
+    "/runtime-es2015.f98fe5d85609ec8ff3c9.js": "f79b70a6da5e57e7b578f436c88bb0c20fb3b639",
+    "/runtime-es5.f98fe5d85609ec8ff3c9.js": "171140107c5e988aea6353ab1bf856ee006481c9",
+    "/scripts.8c4119a659b601fb075c.js": "9b87c8901ff5037b61a38f95793f3cd625934234",
+    "/styles.f90c14ee0ccdb15abc76.css": "06ffd774a5fae199ddcb91704119a5984a480166"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
