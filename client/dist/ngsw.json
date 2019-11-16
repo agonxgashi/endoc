@@ -1,0 +1,132 @@
+{
+  "configVersion": 1,
+  "timestamp": 1573919145883,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/10-es2015.b9587de19d75559905fe.js",
+        "/10-es5.b9587de19d75559905fe.js",
+        "/6-es2015.f97ce01cc046c85755b5.js",
+        "/6-es5.f97ce01cc046c85755b5.js",
+        "/7-es2015.15f085435ec177082c51.js",
+        "/7-es5.15f085435ec177082c51.js",
+        "/8-es2015.8305beaa8bce2a9bcd7b.js",
+        "/8-es5.8305beaa8bce2a9bcd7b.js",
+        "/9-es2015.8525633e611891c5f843.js",
+        "/9-es5.8525633e611891c5f843.js",
+        "/common-es2015.09dfd1d8ffae54ba3365.js",
+        "/common-es5.09dfd1d8ffae54ba3365.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.f466c4920625c3ea07f2.js",
+        "/main-es5.f466c4920625c3ea07f2.js",
+        "/manifest.webmanifest",
+        "/polyfills-es2015.d7f449456a4c8236abbc.js",
+        "/polyfills-es5.9cf6cba196df156496c8.js",
+        "/runtime-es2015.a851a12557a8e189bc17.js",
+        "/runtime-es5.a851a12557a8e189bc17.js",
+        "/scripts.8c4119a659b601fb075c.js",
+        "/styles-es2015.7d1d6db305f7d06c4f00.js",
+        "/styles-es5.7d1d6db305f7d06c4f00.js"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/i18n/al.json",
+        "/assets/i18n/en.json",
+        "/assets/icons/apple-touch-icon.png",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/endoc-wide-logo.svg",
+        "/assets/images/unDraw/no_data.svg",
+        "/assets/scripts/bsadmin.js",
+        "/assets/styles/bsadmin.css",
+        "/fontawesome-webfont.674f50d287a8c48dc19b.eot",
+        "/fontawesome-webfont.912ec66d7572ff821749.svg",
+        "/fontawesome-webfont.af7ae505a9eed503f8b8.woff2",
+        "/fontawesome-webfont.b06871f281fee6b241d6.ttf",
+        "/fontawesome-webfont.fee66e712a8a08eef580.woff"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/10-es2015.b9587de19d75559905fe.js": "6acab03092d6c1a5495e93c5225512582357fc5d",
+    "/10-es5.b9587de19d75559905fe.js": "8011fd38df5f08da532cdb19e8f011a4087eb49c",
+    "/6-es2015.f97ce01cc046c85755b5.js": "c3d2ada0867a65b3b5e89fa582bef90ae9f82fb0",
+    "/6-es5.f97ce01cc046c85755b5.js": "509b730fb319198308de0b047f508942d578785d",
+    "/7-es2015.15f085435ec177082c51.js": "f32a437e951e15316ee1bb288bff590f8f50b8ee",
+    "/7-es5.15f085435ec177082c51.js": "f03ac3838c77ade2ec1b8fa085efbbc3e177974c",
+    "/8-es2015.8305beaa8bce2a9bcd7b.js": "f37adced08bf5e6d6d540b5986918994790aebfd",
+    "/8-es5.8305beaa8bce2a9bcd7b.js": "e2acfe6be4c8d053e98d820c3a1893ca83a1c3c9",
+    "/9-es2015.8525633e611891c5f843.js": "d775350206bd65504039907f57535bfcf7f9fa50",
+    "/9-es5.8525633e611891c5f843.js": "44f6b599ecd0b6d4e322144ae73c52cbf2140bfe",
+    "/assets/i18n/al.json": "662095df61a844307762a2c54e61d4d4e74c4917",
+    "/assets/i18n/en.json": "b7afe66d52179cead0b1c290269030546cd1bc17",
+    "/assets/icons/apple-touch-icon.png": "8331fa78379232f5ef2317edef8989990fa245d6",
+    "/assets/icons/icon-128x128.png": "8f2af9258db8f2a0ea2b0bd64db08d73b4cbceca",
+    "/assets/icons/icon-144x144.png": "21ac2ab02d56e9dd97c8d6117f08d62b07805827",
+    "/assets/icons/icon-152x152.png": "31c15204f155926a43a06f37a51e64b572dcf74d",
+    "/assets/icons/icon-192x192.png": "c19920ee6c2c92218dac4dd9971c14145cc5ffcd",
+    "/assets/icons/icon-384x384.png": "e3956d3e586ef994102a69a1bceca7ddaecba093",
+    "/assets/icons/icon-512x512.png": "4d87b8d7964bed0a190861428dc459f54805d0bb",
+    "/assets/icons/icon-72x72.png": "7cdb059b0c47bdc478282215741748c9d3ae81be",
+    "/assets/icons/icon-96x96.png": "420ad39f3ffa9663d01edaec658e80ed12718902",
+    "/assets/images/endoc-wide-logo.svg": "0564c919a130821e577457fb56d618ae90ea82eb",
+    "/assets/images/unDraw/no_data.svg": "e2a19576f705f9838cdc06db07cf320ad2c428e7",
+    "/assets/scripts/bsadmin.js": "dd98f5fe6fedd2a37dc7483dd63e36888a476d71",
+    "/assets/styles/bsadmin.css": "80bfb97bccb751d37fce05bd22e2b7fe4827d7ac",
+    "/common-es2015.09dfd1d8ffae54ba3365.js": "56205c369796f1a2a0402244e8b99bba20f28152",
+    "/common-es5.09dfd1d8ffae54ba3365.js": "0b90b8b403a3e5059f16e149bb053e95b90ad59a",
+    "/favicon.ico": "31b7c29463499e531c4650d57cf7fab0121f25eb",
+    "/fontawesome-webfont.674f50d287a8c48dc19b.eot": "d980c2ce873dc43af460d4d572d441304499f400",
+    "/fontawesome-webfont.912ec66d7572ff821749.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
+    "/fontawesome-webfont.af7ae505a9eed503f8b8.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
+    "/fontawesome-webfont.b06871f281fee6b241d6.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
+    "/fontawesome-webfont.fee66e712a8a08eef580.woff": "28b782240b3e76db824e12c02754a9731a167527",
+    "/index.html": "b975bad1b73133b479b56597da6186d944c7c309",
+    "/main-es2015.f466c4920625c3ea07f2.js": "890a6d4ad259433f9e4cf163bc7a99384aead861",
+    "/main-es5.f466c4920625c3ea07f2.js": "1d383b9f3451cd21469d32549fea502ed0d5814e",
+    "/manifest.webmanifest": "1899706aba529ced009a79074f1f39d75bc78dd9",
+    "/polyfills-es2015.d7f449456a4c8236abbc.js": "aa7337b90a54bee56e29fe430cd4bd500b183d39",
+    "/polyfills-es5.9cf6cba196df156496c8.js": "933435d8c51c22085f5056f6ac19c1c0a1fbe3ed",
+    "/runtime-es2015.a851a12557a8e189bc17.js": "668a1dbfb96b3f58835f1f9474f03781c98877b1",
+    "/runtime-es5.a851a12557a8e189bc17.js": "8e2e87b740009f50adbd87e3ec67d09614671702",
+    "/scripts.8c4119a659b601fb075c.js": "9b87c8901ff5037b61a38f95793f3cd625934234",
+    "/styles-es2015.7d1d6db305f7d06c4f00.js": "86fcb3939915d3c6a15d5c99345c633b540b8edf",
+    "/styles-es5.7d1d6db305f7d06c4f00.js": "86fcb3939915d3c6a15d5c99345c633b540b8edf"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
