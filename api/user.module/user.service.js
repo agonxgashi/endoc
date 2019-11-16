@@ -13,7 +13,7 @@ module.exports = {
         if (_user) {
           var isMatch = await _user.comparePassword(_password)
           if (isMatch) {
-            var jwt = jwtService.generateJwt({ _id: _user._id, Username: _username })
+            var jwt = await jwtService.generateJwt({ _id: _user._id, Username: _username })
             res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS_LOGIN', 200, jwt))
           } else {
             throw new Error('USER_PSW_NOT_MATCH')
@@ -37,7 +37,7 @@ module.exports = {
         throw new Error('ERR_THIS_USER_EXISTS')
       } else {
         const _data = await _user.save()
-        var jwt = jwtService.generateJwt({ _id: _data._id, Username: _data.Username })
+        var jwt = await jwtService.generateJwt({ _id: _data._id, Username: _data.Username })
         res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS_REGISTER', 200, jwt))
       }
     } catch (error) {
