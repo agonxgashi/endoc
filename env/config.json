@@ -1,0 +1,8 @@
+{
+  "Port": 3000,
+  "DB": {
+    "Mongo_ConStr": ""
+  },
+  "JWT_SECRET": "",
+  "JWT_TIMEOUT": 86400
+}
