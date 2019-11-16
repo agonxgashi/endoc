@@ -3,7 +3,6 @@ const ReturnObj = require('./../../../models/return-object.model')
 
 module.exports = {
   view: async function (req, res) {
-    console.log('view API')
     try {
       const _api_doc_hash = req.params.api_doc_id
       const _data = await ApiDoc.findOne({ PublicHash: _api_doc_hash }).populate('CheckInId', '-_id').select('-_id CheckInId').exec()

@@ -26,7 +26,6 @@ module.exports = {
       res.setHeader('Content-Disposition', 'attachment; filename=endoc.pdf')
       // res.send(result)
     } catch (error) {
-      console.log('ERROR: ', error)
       res.send(error)
     }
   },
@@ -39,7 +38,6 @@ module.exports = {
       res.setHeader('Content-Disposition', 'attachment; filename=endoc.html')
       res.send(html)
     } catch (error) {
-      console.log('ERROR: ', error)
       res.send(error)
     }
   }
