@@ -69,13 +69,18 @@
             </table>
           </div>
 
-          <div *ngIf="e.ResponseExample" class="border rounded p-4">
+          <div *ngIf="e.Responses.length" class="border rounded p-4">
             <h6> Response example: </h6>
-            <hr>
-            <small>
-              <pre> {{e.ResponseExample}} </pre>
-            </small>
+            <table class="table table-sm">
+                <tr class="row p-0 m-0" *ngFor="let item of e.Responses">
+                  <td class="text-muted col-2"> <small> <i>HTTP</i> <code> {{ item.StatusCode}}</code></small> </td>
+                  <td class="col-6">
+                    <pre>{{ item.Content}}</pre>
+                  </td>
+                </tr>
+              </table>
           </div>
+
       </div>
     </div>
 

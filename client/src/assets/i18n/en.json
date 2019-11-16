@@ -68,6 +68,7 @@
     "Description": "Description",
     "AddHeader": "Add header",
     "AddParameter": "Add parameter",
+    "AddResponse": "Add response",
     "ResponseExample": "Response Example"
   },
   "LABEL": {

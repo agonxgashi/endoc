@@ -132,8 +132,40 @@
 
       <!-- RESPONSE DATA TAB -->
       <div class="tab-pane fade" id="nav-response" role="tabpanel" aria-labelledby="nav-response-tab">
+        <!-- <input type="number" class="form-control">
         <textarea class="form-control" [(ngModel)]="route_to_create.ResponseExample" placeholder="Response Example"
-          rows="15"></textarea>
+          rows="15"></textarea> -->
+
+
+          <table class="table table-bordered">
+              <thead>
+                <tr class="text-center bg-light">
+                  <th>Status Code</th>
+                  <th>Content</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of route_to_create.Responses; let i = index">
+                  <td>
+                    <input type="number" [(ngModel)]="p.StatusCode" class="form-control">
+                  </td>
+                  <td>
+                    <textarea rows="3" type="text" [(ngModel)]="p.Content" class="form-control"> </textarea>
+                  <td class="text-center">
+                    <label (click)="remove_response(i)" class="btn btn-danger btn-small rounded"> <i
+                        class="fa fa-times"></i> </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5" class="p-0">
+                    <button class="btn btn-dark btn-block m-0 rounded-0" (click)="add_new_response()">
+                      {{'ROUTE.AddResponse' | translate}} </button>
+                  </td>
+                </tr>
+    
+              </tbody>
+            </table>
       </div>
     </div>
   </div>

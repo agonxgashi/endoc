@@ -68,6 +68,7 @@
     "Description": "Përshkrimi",
     "AddHeader": "Shto header",
     "AddParameter": "Shto parametër",
+    "AddResponse": "Shto pëgjegjje",
     "ResponseExample": "Shemull i përgjegjjes"
   },
   "LABEL": {

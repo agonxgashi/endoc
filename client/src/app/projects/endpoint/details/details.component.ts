@@ -28,6 +28,7 @@ export class DetailsComponent implements OnInit {
   async get_route_details() {
     this.selected_route = undefined;
     this.selected_route = await this.api.get(`/api/project/${this.project_id}/endpoint/${this.endpoint_id}`);
+    console.log(this.selected_route);
   }
 
 

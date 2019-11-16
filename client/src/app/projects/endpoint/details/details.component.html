@@ -81,9 +81,25 @@
     </table>
   </div>
 
+  <div *ngIf="selected_route.Responses.length" class="col-md-12 m-0 p-0">
+      <br>
+      <br>
+      <div class="bg-light border rounded p-4">
+        <h4> Response Example: </h4>
+        <table class="table">
+          <tr class="row p-0 m-0" *ngFor="let item of selected_route.Responses">
+            <td class="col-3" class="text-muted"> <small> <i>HTTP</i> <code> {{ item.StatusCode}}</code></small> </td>
+            <td class="col-8">
+              <pre><code>{{ item.Content}}</code></pre>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  
 
 
-  <div *ngIf="selected_route.ResponseExample" class="col-md-12 m-0 p-0">
+  <!-- <div *ngIf="selected_route.ResponseExample" class="col-md-12 m-0 p-0">
     <br>
     <br>
     <div class="bg-light border rounded p-4">
@@ -91,6 +107,6 @@
       <hr>
       <pre><code>{{ selected_route.ResponseExample}}</code></pre>
     </div>
-  </div>
+  </div> -->
 
 </div>
