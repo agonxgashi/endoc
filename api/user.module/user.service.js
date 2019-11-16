@@ -1,13 +1,9 @@
 const User = require('./user.model')
 const ReturnObj = require('./../../models/return-object.model')
-const config = require('./../../env/config.json')
 const jwtService = require('./../../services/auth/jwt.service')
 
 module.exports = {
   login: async function (req, res) {
-    console.log(config)
-    console.log('LOGIN')
-     
     try {
       const _username = req.body.Username
       const _password = req.body.Password

@@ -31,6 +31,5 @@ export class DocComponent implements OnInit {
 
   async get_check_in() {
     this.ci = await this.api.get(`/api/public/api-doc/${this.check_in_id}/view`);
-    console.log(this.ci);
   }
 }

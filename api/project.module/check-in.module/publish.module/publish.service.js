@@ -50,7 +50,6 @@ module.exports = {
       await Publish.findByIdAndDelete(publish_id).exec()
       res.status(200).send(new ReturnObj(true, 'MSG_PUBLISH_DELETED', 200, null))
     } catch (error) {
-      console.log(error)
       res.status(500).send(new ReturnObj(false, 'ERR_PUBLISH_NOT_DELETED', 200, null))
     }
   },

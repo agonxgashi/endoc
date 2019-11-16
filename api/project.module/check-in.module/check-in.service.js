@@ -25,8 +25,6 @@ module.exports = {
       await _check_in.save()
       res.send(new ReturnObj(true, 'MSG_CHECKED_IN_SUCCESSFULLY', 200, {}))
     } catch (error) {
-      console.log(error)
-      
       res.status(500).send(new ReturnObj(false, 'ERR_NOT_CHECKED_IN', 500, null))
     }
   },
