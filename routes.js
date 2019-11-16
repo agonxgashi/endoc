@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
 // Middlewares
-const jwtMiddleware = require('./services/auth/jwt.service')
+const jwtMiddleware = require('./services/auth/jwt.middleware')
 
 // Routes
 const _public = require('./api/public.module/public.controller')

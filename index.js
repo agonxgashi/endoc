@@ -21,7 +21,7 @@ app.use(bodyParser.json({
 }))
 app.use(cors())
 
-mongoose.connect(config.DB.Mongo_ConStr, {
+mongoose.connect(process.env.MONGO_CON_STR || config.DB.Mongo_ConStr, {
   useNewUrlParser: true
 }, (err) => {
   if (err) {

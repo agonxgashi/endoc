@@ -1,8 +1,7 @@
 const User = require('./user.model')
 const ReturnObj = require('./../../models/return-object.model')
-const jwt = require('jsonwebtoken')
 const config = require('./../../env/config.json')
-const jwtSecret = config.JWT_SECRET
+const jwtService = require('./../../services/auth/jwt.service')
 
 module.exports = {
   login: async function (req, res) {
@@ -18,7 +17,7 @@ module.exports = {
         if (_user) {
           var isMatch = await _user.comparePassword(_password)
           if (isMatch) {
-            var jwt = generateJwt({ _id: _user._id, Username: _username })
+            var jwt = jwtService.generateJwt({ _id: _user._id, Username: _username })
             res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS_LOGIN', 200, jwt))
           } else {
             throw new Error('USER_PSW_NOT_MATCH')
@@ -42,18 +41,11 @@ module.exports = {
         throw new Error('ERR_THIS_USER_EXISTS')
       } else {
         const _data = await _user.save()
-        var jwt = generateJwt({ _id: _data._id, Username: _data.Username })
+        var jwt = jwtService.generateJwt({ _id: _data._id, Username: _data.Username })
         res.status(200).send(new ReturnObj(true, 'MSG_SUCCESS_REGISTER', 200, jwt))
       }
     } catch (error) {
       res.status(200).send(new ReturnObj(false, error.message || 'ERR_SOMETHING_WENT_WRONG', 500, null))
     }
   }
-}
-
-function generateJwt (payload) {
-  var token = jwt.sign(payload, jwtSecret, {
-    expiresIn: 86400
-  })
-  return token
 }
