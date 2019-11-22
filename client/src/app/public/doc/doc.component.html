@@ -13,11 +13,7 @@
       <div class="card-header">
         <i *ngIf="e.IsProtected" class="fa fa-lock pr-2 text-success"></i>
         <i *ngIf="!e.IsProtected" class="fa fa-lock pr-2 text-danger"></i>
-
-        <span *ngIf="e.Method == 'GET'" class="badge badge-primary px-2 mr-2 text-right">GET</span>
-        <span *ngIf="e.Method == 'POST'" class="badge badge-warning px-2 mr-2 text-right">POST</span>
-        <span *ngIf="e.Method == 'PUT'" class="badge badge-success px-2 mr-2 text-right">PUT</span>
-        <span *ngIf="e.Method == 'DELETE'" class="badge badge-danger px-2 mr-2 text-right">DELETE</span>
+        <span class="badge badge-{{css_class_of_path_method(e.Method)}} px-2 mr-2 text-right">{{ e.Method }}</span>
       
         <b> {{ e.Path }} </b>
         <br>
@@ -71,14 +67,14 @@
 
           <div *ngIf="e.Responses.length" class="border rounded p-4">
             <h6> Response example: </h6>
-            <table class="table table-sm">
-                <tr class="row p-0 m-0" *ngFor="let item of e.Responses">
-                  <td class="text-muted col-2"> <small> <i>HTTP</i> <code> {{ item.StatusCode}}</code></small> </td>
-                  <td class="col-6">
-                    <pre>{{ item.Content}}</pre>
-                  </td>
-                </tr>
-              </table>
+            <div class="row" *ngFor="let item of e.Responses">
+              <div class="col-2">
+                <code> <i>HTTP</i> <code> {{ item.StatusCode}}</code></code>
+              </div>
+              <div class="col-10">
+                <pre><code>{{ item.Content}}</code></pre>
+              </div>
+            </div>
           </div>
 
       </div>

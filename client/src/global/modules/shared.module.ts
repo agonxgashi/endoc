@@ -12,13 +12,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   ],
   imports: [
     FormsModule,
-    // TranslateModule.forRoot({
-    //   loader: {
-    //     provide: TranslateLoader,
-    //     useFactory: HttpLoaderFactory,
-    //     deps: [HttpClient]
-    //   }
-    // }),
     RouterModule,
     CommonModule
   ],

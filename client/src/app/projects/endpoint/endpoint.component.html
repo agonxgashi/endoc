@@ -1,10 +1,17 @@
 <!-- Visible on mobile -->
-<div *ngIf="deviceService.isMobile()" class="px-2 pt-2">
-  <select class="form-control" #routeSelector (change)="select_route(routeSelector.value)">
-    <option></option>
-    <option *ngFor="let r of get_route_list" value="{{r._id}}">{{ r.Method }} - {{ r.Path }}</option>
-  </select>
-  <div class="content p-4">
+<div *ngIf="deviceService.isMobile()" class="px-2 pt-2 bg-dark">
+
+  <div class="input-group pb-2">
+    <div class="input-group-prepend">
+      <button [routerLink]="['/project']" class="btn btn-dark" type="button">
+        <i class="fa fa-arrow-left"></i>
+      </button>
+    </div>
+    <select class="form-control" #routeSelector [ngModel]="routeId" (change)="select_route(routeSelector.value)">
+      <option *ngFor="let r of get_route_list" value="{{r._id}}">{{ r.Method }} - {{ r.Path }}</option>
+    </select>
+  </div>
+  <div class="bg-white content p-4 rounded-top">
     <router-outlet></router-outlet>
   </div>
 </div>

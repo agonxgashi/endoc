@@ -15,10 +15,10 @@ body
     each e in Endpoints
       div.card.my-3
         div.card-header
-          if e.IsProtected
-            i.fa.fa-lock.pr-2.text-success
+          if e.IsProtected === true
+            i.fa.fa-lock.pr-2.text-danger
           else
-            i.fa.fa-unlock.pr-2.text-danger
+            i.fa.fa-unlock.pr-2.text-success
           
           if e.Method === 'GET'
             span.badge.badge-primary.px-2.mr-2.text-right #{e.Method}
@@ -82,11 +82,14 @@ body
                     td.px-2 
                       small #{p.ParameterDataType}
           
-          if e.ResponseExample
+          if e.Responses
             div.border.rounded.p-4
-              h6 Response example:
+              h6 Responses
               hr
-              small
-                pre #{e.ResponseExample}
-
+              each r in e.Responses
+                div.row
+                  div.col-2
+                    code HTTP #{r.StatusCode}
+                  div.col-10
+                    pre  #{r.Content}
 
