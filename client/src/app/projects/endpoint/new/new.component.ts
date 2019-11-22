@@ -53,7 +53,7 @@ export class NewComponent implements OnInit {
     this.route_to_create.Parameters.splice(index, 1);
   }
 
-  add_new_response(index: number) {
+  add_new_response() {
     this.route_to_create.Responses.push(new ResponseModel());
   }
 
