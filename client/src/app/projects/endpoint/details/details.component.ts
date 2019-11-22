@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { RouteModel } from 'src/models/routes/route.model';
 import { ApiService } from 'src/services/authentication/api.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-details',
@@ -13,7 +13,7 @@ export class DetailsComponent implements OnInit {
   project_id: string;
   endpoint_id: string;
   selected_route: RouteModel;
-  constructor(private activatedRoute: ActivatedRoute, private api: ApiService) { }
+  constructor(private activatedRoute: ActivatedRoute, private api: ApiService, public deviceService: DeviceDetectorService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {

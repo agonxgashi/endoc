@@ -12,6 +12,7 @@ import { ApiService } from 'src/services/authentication/api.service';
   styleUrls: ['./endpoint.component.css']
 })
 export class EndpointComponent implements OnInit {
+  routeId: string;
   route_filter: string;
   selected_project_model: ProjectModel;
   selected_project: string;
@@ -43,21 +44,6 @@ export class EndpointComponent implements OnInit {
       relativeTo: this.activatedRoute
     });
   }
-
-  public get get_selected_route(): string {
-    return this.activatedRoute.params['routeId'];
-  }
-
-  public get has_selected_route_on_mobile(): boolean {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      const trigger = this.router.url,
-        regexp = new RegExp('\/projects\/[[:alnum:]]{24}\/[[:alnum:]]{24}'),
-        test = regexp.test(trigger);
-      return test;
-    }
-    return false;
-  }
-
 
   public get get_route_list(): RouteModel[] {
     return this.route_filter ? this.routes_list.filter(x => x.Path.toUpperCase().includes(this.route_filter.toUpperCase())) : this.routes_list;

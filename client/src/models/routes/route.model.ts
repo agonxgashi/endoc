@@ -1,5 +1,6 @@
 import { HeaderModel } from './header.model';
 import { ParameterModel } from './parameter.model';
+import { ResponseModel } from './reponse.model';
 
 export class RouteModel {
     _id: string;
@@ -11,4 +12,5 @@ export class RouteModel {
     Headers: HeaderModel[] = [];
     Parameters: ParameterModel[] = [];
     ResponseExample: string;
+    Responses: ResponseModel[] = [];
 }

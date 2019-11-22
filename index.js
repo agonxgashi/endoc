@@ -20,7 +20,6 @@ app.use(bodyParser.json({
   type: 'application/vnd.api+json'
 }))
 app.use(cors())
-console.log('ENV', process.env)
 mongoose.connect(process.env.MONGO_CON_STR || config.DB.Mongo_ConStr, {
   useNewUrlParser: true
 }, (err) => {
