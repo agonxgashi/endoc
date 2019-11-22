@@ -4,6 +4,7 @@ import { RouteModel } from 'src/models/routes/route.model';
 import { ParameterModel } from 'src/models/routes/parameter.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/services/authentication/api.service';
+import { ResponseModel } from 'src/models/routes/reponse.model';
 
 @Component({
   selector: 'app-new',
@@ -50,6 +51,14 @@ export class NewComponent implements OnInit {
 
   remove_parameter(index: number) {
     this.route_to_create.Parameters.splice(index, 1);
+  }
+
+  add_new_response(index: number) {
+    this.route_to_create.Responses.push(new ResponseModel());
+  }
+
+  remove_response(index: number) {
+    this.route_to_create.Responses.splice(index, 1);
   }
 
   // Prefill methods

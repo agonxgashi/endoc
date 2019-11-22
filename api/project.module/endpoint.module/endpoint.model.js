@@ -13,12 +13,18 @@ var ParameterSchema = new mongoose.Schema({
   ParameterDataType: String
 })
 
+var ResponseSchema = new mongoose.Schema({
+  StatusCode: Number,
+  Content: String
+})
+
 const EndpointSchema = new mongoose.Schema({
   ProjectId: mongoose.Schema.Types.ObjectId,
   Method: String,
   Path: String,
   Description: String,
   ResponseExample: String,
+  Responses: [ResponseSchema],
   IsProtected: Boolean,
   Headers: [HeaderSchema],
   Parameters: [ParameterSchema]

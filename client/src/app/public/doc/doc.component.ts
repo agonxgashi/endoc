@@ -28,6 +28,20 @@ export class DocComponent implements OnInit {
     return [];
   }
 
+  public css_class_of_path_method(method: string): string {
+    switch (method) {
+      case 'POST':
+        return 'warning text-dark';
+      case 'GET':
+        return 'primary';
+      case 'DELETE':
+        return 'danger';
+      case 'PUT':
+        return 'success';
+      default:
+        return 'dark';
+    }
+  }
 
   async get_check_in() {
     this.ci = await this.api.get(`/api/public/api-doc/${this.check_in_id}/view`);
